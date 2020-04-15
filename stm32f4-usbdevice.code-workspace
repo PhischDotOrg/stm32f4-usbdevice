@@ -6,7 +6,16 @@
 	],
 	"settings": {
 		"files.associations": {
-			"optional": "cpp"
+			"optional": "cpp",
+			"filesystem": "cpp",
+			"*.tpp": "cpp",
+			"type_traits": "cpp",
+			"ostream": "cpp",
+			"*.tcc": "cpp",
+			"__config": "cpp",
+			"mstd_type_traits": "cpp",
+			"istream": "cpp",
+			"cstring": "c"
 		}
 	}
 }
