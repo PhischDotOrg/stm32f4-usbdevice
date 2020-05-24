@@ -11,6 +11,7 @@ set(PROJECT_NAME    stm32f4-minimal)
 set(TARGET_NAME     firmware)
 set(TARGET_SRC
     ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/UsbDescriptors.cpp
 )
 
 # add_definitions("-DUSB_DEBUG")

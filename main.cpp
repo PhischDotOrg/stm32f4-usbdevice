@@ -26,11 +26,12 @@
 
 #include <usb/UsbDevice.hpp>
 #include <usb/UsbInEndpoint.hpp>
-#include <usb/UsbBulkOutEndpoint.hpp>
+#include <usb/UsbOutEndpoint.hpp>
 #include <usb/UsbControlPipe.hpp>
-#include <usb/UsbCtrlOutEndpoint.hpp>
 #include <usb/UsbConfiguration.hpp>
 #include <usb/UsbInterface.hpp>
+
+#include <usb/UsbApplication.hpp>
 
 #include <version.h>
 
@@ -41,165 +42,25 @@
 extern "C" {
 #endif /* defined(__cplusplus) */
 
+/*******************************************************************************
+ * Information on some Segments, defined via Linker Script
+ ******************************************************************************/
 extern char stext, etext;
 extern char sdata, edata;
 extern char sbss, ebss;
 extern char bstack, estack;
 
+/*******************************************************************************
+ * USB Descriptors (defined in UsbDescriptors.cpp)
+ ******************************************************************************/
+extern const ::usb::UsbDeviceDescriptor_t usbDeviceDescriptor;
+extern const ::usb::UsbStringDescriptors_t usbStringDescriptors;
+extern const ::usb::UsbConfigurationDescriptor_t usbConfigurationDescriptor;
+
 #if defined(__cplusplus)
 } /* extern "C" */
 #endif /* defined(__cplusplus) */
 
-/*******************************************************************************
- * USB Device String Descriptors
- ******************************************************************************/
-static const ::usb::UsbLangId_t usbSupportedLanguageIds[] = { 0x0409, 0x0000 };
-
-static const ::usb::UsbStringDescriptors_t usbStringDescriptors = {
-        .m_stringDescriptorTable = {
-                .m_languageIds      = ::usb::UsbLangIdStringDescriptor_t(usbSupportedLanguageIds),
-                .m_manufacturer     = ::usb::UsbStringDescriptor("PhiSch.org"),
-                .m_product          = ::usb::UsbStringDescriptor("PhiSch.org USB Virtual COM Port (VCP) Demo on STM32F4Discovery"),
-                .m_serialNumber     = ::usb::UsbStringDescriptor("6B426366-3E64-4B20-A12D-B8AC744F8ED5"),
-                .m_configuration    = ::usb::UsbStringDescriptor("PhiSch.org USB Virtual COM Port (VCP) Configuration"),
-                .m_interface        = ::usb::UsbStringDescriptor("PhiSch.org USB Comm. Device Class (CDC) Interface")
-        }
-};
-
-static const struct UsbConfigurationDescriptor_s {
-    struct ::usb::UsbConfigurationDescriptorT<void *, 0>    m_configDescrHdr;
-    struct ::usb::UsbInterfaceAssociationDescriptor_s       m_iad;
-    struct ::usb::UsbInterfaceDescriptorT<0>                m_cdcInterface;
-    struct ::usb::UsbCdc_FunctDescr_Header_s                m_cdcFunctDescr_Header;
-    struct ::usb::UsbCdc_FunctDescr_CallMgmt_s              m_cdcFunctDescr_CallMgmt;
-    struct ::usb::UsbCdc_FunctDescr_ACM_s                   m_cdcFunctDescr_ACM;
-    struct ::usb::UsbCdc_FunctDescr_UnionT<1>               m_cdcFunctDescr_Union;
-    struct ::usb::UsbEndpointDescriptor                     m_notificationEndpoint;
-    struct ::usb::UsbInterfaceDescriptorT<2>                m_dataInterface;
-} __attribute__((packed)) usbConfigurationDescriptor __attribute__((section(".fixeddata"))) = {
-    .m_configDescrHdr = {
-        .m_bLength                  = sizeof( decltype(usbConfigurationDescriptor.m_configDescrHdr)),
-        .m_bDescriptorType          = ::usb::UsbDescriptorTypeId_e::e_Configuration,
-        .m_wTotalLength = {
-            .m_loByte               = (sizeof(decltype(usbConfigurationDescriptor)) >> 0),
-            .m_hiByte               = (sizeof(decltype(usbConfigurationDescriptor)) >> 8)
-        },
-        .m_bNumInterfaces           = 2,
-        .m_bConfigurationValue      = 1,
-        .m_iConfiguration           = 4, /* Index of m_configuration within usbStringDescriptors.m_stringDescriptorTable */
-        .m_bmAttributes             = 0x80      // USB 2.0 Spec demands this Bit to always be set
-                                    | 0x40,     // Set to 0x40 for Self-powered Device, 0x00 for Bus-powered
-        .m_bMaxPower                = 5,        // Power consumption in Units of 2mA
-        .m_interfaces               = {}
-    },
-    .m_iad = {
-        .m_bLength                  = sizeof(decltype(usbConfigurationDescriptor.m_iad)),
-        .m_bDescriptorType          = 0x0B /* ::usb::UsbDescriptorTypeId_e::e_InterfaceAssociation */,
-        .m_bFirstInterface          = 0 /* usbConfigurationDescriptor.m_cdcInterface.m_bInterfaceNumber */,
-        .m_bInterfaceCount          = 2,
-        .m_bFunctionClass           = ::usb::UsbInterfaceClass_e::e_UsbInterface_CommunicationDeviceClass,
-        .m_bFunctionSubClass        = ::usb::UsbCdc_SubclassCode_e::e_UsbCdcSubclass_AbstractControl,
-        .m_bFunctionProtocol        = ::usb::UsbCdc_ProtocolCode_e::e_UsbCdcProto_AT_V250,
-        .m_iFunction                = 5 /* Index of m_interface within usbStringDescriptors.m_stringDescriptorTable */
-    },
-    .m_cdcInterface = {
-        .m_bLength                  = sizeof(decltype(usbConfigurationDescriptor.m_cdcInterface)),
-        .m_bDescriptorType          = ::usb::UsbDescriptorTypeId_e::e_Interface,
-        .m_bInterfaceNumber         = 0,
-        .m_bAlternateSetting        = 0,
-        .m_bNumEndpoints            = 1,
-        .m_bInterfaceClass          = ::usb::UsbInterfaceClass_e::e_UsbInterface_CommunicationDeviceClass,
-        .m_bInterfaceSubClass       = ::usb::UsbCdc_SubclassCode_e::e_UsbCdcSubclass_AbstractControl,
-        .m_bInterfaceProtocol       = ::usb::UsbCdc_ProtocolCode_e::e_UsbCdcProto_AT_V250,
-        .m_iInterface               = 5, /* Index of m_interface within usbStringDescriptors.m_stringDescriptorTable */
-        .m_endpoints                = {}
-    },
-    .m_cdcFunctDescr_Header = {
-        .m_cdcFncDescr = {
-            .m_bFunctionLength      = sizeof(decltype(usbConfigurationDescriptor.m_cdcFunctDescr_Header)),
-            .m_bDescriptorType      = ::usb::UsbCdcFunctionalDescriptorType_e::e_UsbDec_DescrType_Interface,
-            .m_bDescriptorSubtype   = ::usb::UsbCdcFunctionalDescriptorSubtype_e::e_UsbDec_DescrSubtype_Header
-        },
-        .m_bcdCDC = {
-            .m_loByte               = 0x10,
-            .m_hiByte               = 0x01
-        }
-    },
-    .m_cdcFunctDescr_CallMgmt = {
-        .m_cdcFncDescr = {
-            .m_bFunctionLength      = sizeof(decltype(usbConfigurationDescriptor.m_cdcFunctDescr_CallMgmt)),
-            .m_bDescriptorType      = ::usb::UsbCdcFunctionalDescriptorType_e::e_UsbDec_DescrType_Interface,
-            .m_bDescriptorSubtype   = ::usb::UsbCdcFunctionalDescriptorSubtype_e::e_UsbDec_DescrSubtype_CallMgmt
-        },
-        .m_bmCapabilities           = 0,
-        .m_bDataInterface           = 1 /* usbConfigurationDescriptor.m_dataInterface.m_bInterfaceNumber */
-    },
-    .m_cdcFunctDescr_ACM = {
-        .m_cdcFncDescr = {
-            .m_bFunctionLength      = sizeof(decltype(usbConfigurationDescriptor.m_cdcFunctDescr_ACM)),
-            .m_bDescriptorType      = ::usb::UsbCdcFunctionalDescriptorType_e::e_UsbDec_DescrType_Interface,
-            .m_bDescriptorSubtype   = ::usb::UsbCdcFunctionalDescriptorSubtype_e::e_UsbDec_DescrSubtype_AbstractControlMgmt
-        },
-        .m_bmCapabilities           = 0x2
-    },
-    .m_cdcFunctDescr_Union = {
-        .m_cdcFncDescr = {
-            .m_bFunctionLength      = sizeof(decltype(usbConfigurationDescriptor.m_cdcFunctDescr_Union)),
-            .m_bDescriptorType      = ::usb::UsbCdcFunctionalDescriptorType_e::e_UsbDec_DescrType_Interface,
-            .m_bDescriptorSubtype   = ::usb::UsbCdcFunctionalDescriptorSubtype_e::e_UsbDec_DescrSubtype_Union
-        },
-        .m_bControlInterface        = 0 /* usbConfigurationDescriptor.m_cdcInterface.m_bInterfaceNumber */,
-        .m_subordinateInterface     = {
-            1 /* usbConfigurationDescriptor.m_dataInterface.m_bInterfaceNumber */
-        }
-    },
-    .m_notificationEndpoint = {
-        .m_bLength                  = sizeof(decltype(usbConfigurationDescriptor.m_notificationEndpoint)),
-        .m_bDescriptorType          = ::usb::UsbDescriptorTypeId_e::e_Endpoint,
-        .m_bEndpointAddress         = 0x82,
-        .m_bmAttributes             = 3,    // IRQ
-        .m_wMaxPacketSize = {
-            .m_loByte               = 8,
-            .m_hiByte               = 0
-        },
-        .m_bInterval                = 0xFF
-    },
-    .m_dataInterface = {
-        .m_bLength                  = sizeof(decltype(usbConfigurationDescriptor.m_dataInterface)) - sizeof(usbConfigurationDescriptor.m_dataInterface.m_endpoints),
-        .m_bDescriptorType          = ::usb::UsbDescriptorTypeId_e::e_Interface,
-        .m_bInterfaceNumber         = 1,
-        .m_bAlternateSetting        = 0,
-        .m_bNumEndpoints            = 2,
-        .m_bInterfaceClass          = ::usb::UsbInterfaceClass_e::e_UsbInterface_CdcData,
-        .m_bInterfaceSubClass       = 0,
-        .m_bInterfaceProtocol       = 0,
-        .m_iInterface               = 5 /* Index of m_interface within usbStringDescriptors.m_stringDescriptorTable */,
-        .m_endpoints                = {
-            /* Index #0 */ {
-                .m_bLength          = sizeof(decltype(usbConfigurationDescriptor.m_dataInterface.m_endpoints[0])),
-                .m_bDescriptorType  = ::usb::UsbDescriptorTypeId_e::e_Endpoint,
-                .m_bEndpointAddress = 0x01,
-                .m_bmAttributes     = 2,    // Bulk
-                .m_wMaxPacketSize = {
-                    .m_loByte       = 64,
-                    .m_hiByte       = 0
-                },
-                .m_bInterval        = 0
-            },
-            /* Index #1 */ {
-                .m_bLength          = sizeof(decltype(usbConfigurationDescriptor.m_dataInterface.m_endpoints[1])),
-                .m_bDescriptorType  = ::usb::UsbDescriptorTypeId_e::e_Endpoint,
-                .m_bEndpointAddress = 0x81,
-                .m_bmAttributes     = 2,    // Bulk
-                .m_wMaxPacketSize = {
-                    .m_loByte       = 64,
-                    .m_hiByte       = 0
-                },
-                .m_bInterval        = 0
-            }
-        }
-    }
-};
 
 /*******************************************************************************
  * System Devices
@@ -257,31 +118,38 @@ static gpio::PinT<decltype(gpio_engine_A)>  usb_pin_dp(&gpio_engine_A, 12);
 static gpio::PinT<decltype(gpio_engine_A)>  usb_pin_vbus(&gpio_engine_A, 9);
 static gpio::PinT<decltype(gpio_engine_A)>  usb_pin_id(&gpio_engine_A, 10);
 
-static usb::stm32f4::UsbFullSpeedCore                               usbCore(nvic, rcc, usb_pin_dm, usb_pin_dp, usb_pin_vbus, usb_pin_id, /* p_rxFifoSzInWords = */ 128);
+static usb::stm32f4::UsbFullSpeedCore                               usbCore(nvic, rcc, usb_pin_dm, usb_pin_dp, usb_pin_vbus, usb_pin_id, /* p_rxFifoSzInWords = */ 256);
 static usb::stm32f4::UsbDeviceViaSTM32F4                            usbHwDevice(usbCore);
-static usb::stm32f4::InEndpointViaSTM32F4                           defaultHwInEndpoint(usbHwDevice, 0x20, 0);
+static usb::stm32f4::InEndpointViaSTM32F4                           defaultHwInEndpoint(usbHwDevice, /* p_fifoSzInWords = */ 0x20, 0);
 static usb::stm32f4::CtrlInEndpointViaSTM32F4                       defaultHwCtrlInEndpoint(defaultHwInEndpoint);
 static usb::stm32f4::OutEndpointViaSTM32F4                          defaultHwOutEndpoint(usbHwDevice, 0);
-static usb::stm32f4::CtrlOutEndpointViaSTM32F4                      defaultCtrlOutEndpoint(defaultHwOutEndpoint);
 
-static usb::UsbCtrlInEndpoint                                       ctrlInEndp(defaultHwCtrlInEndpoint);
-static usb::UsbCtrlOutEndpoint                                      ctrlOutEndp(defaultCtrlOutEndpoint);
-static usb::UsbControlPipe                                          defaultCtrlPipe(ctrlInEndp, ctrlOutEndp);
-
-static usb::stm32f4::OutEndpointViaSTM32F4                          outHwEndpoint(usbHwDevice, 1);
-static usb::stm32f4::BulkOutEndpointViaSTM32F4                      bulkOutHwEndp(outHwEndpoint);
-static usb::UsbBulkOutEndpoint                                      bulkOutEndpoint(bulkOutHwEndp);
-
-static usb::stm32f4::InEndpointViaSTM32F4                           inHwEndpoint(usbHwDevice, 128, 1);
+static usb::stm32f4::InEndpointViaSTM32F4                           inHwEndpoint(usbHwDevice, /* p_fifoSzInWords = */ 128, 1);
 static usb::stm32f4::BulkInEndpointViaSTM32F4                       bulkInHwEndp(inHwEndpoint);
 usb::UsbBulkInEndpoint                                              bulkInEndpoint(bulkInHwEndp);
 
-static usb::UsbVcpInterface                                         usbVcpInterface(defaultCtrlPipe, bulkOutEndpoint, bulkInEndpoint);
+#if 1
+/* TODO I've found that increasing the buffer size beyond 951 Bytes will make things stop working. */
+static usb::UsbBulkOutLoopbackApplicationT<512>                     bulkOutApplication(bulkInEndpoint);
+#else
+static usb::UsbUartApplicationT<decltype(uart_access)>              bulkOutApplication(uart_access);
+#endif
 
-static usb::UsbConfigurationT<decltype(usbConfigurationDescriptor.m_configDescrHdr)> 
-                                                                    usbConfiguration(usbConfigurationDescriptor.m_configDescrHdr, usbVcpInterface);
+static usb::stm32f4::OutEndpointViaSTM32F4                          outHwEndpoint(usbHwDevice, 1);
+static usb::UsbBulkOutEndpointT<usb::stm32f4::BulkOutEndpointViaSTM32F4>    bulkOutEndpoint(bulkOutApplication);
+static usb::stm32f4::BulkOutEndpointViaSTM32F4                      bulkOutHwEndp(outHwEndpoint, bulkOutEndpoint);
 
-static usb::UsbDevice                                               genericUsbDevice(usbHwDevice, defaultCtrlPipe, usbConfiguration, usbStringDescriptors);
+static usb::UsbVcpInterface                                         usbVcpInterface(bulkOutEndpoint, bulkInEndpoint);
+
+static usb::UsbConfigurationT<decltype(usbConfigurationDescriptor)> usbConfiguration(usbVcpInterface, usbConfigurationDescriptor);
+
+static usb::UsbDevice                                                       genericUsbDevice(usbHwDevice, usbDeviceDescriptor, usbStringDescriptors, { &usbConfiguration });
+
+static usb::UsbCtrlInEndpoint                                               ctrlInEndp(defaultHwCtrlInEndpoint);
+static usb::UsbControlPipe                                                  defaultCtrlPipe(genericUsbDevice, ctrlInEndp);
+
+static usb::UsbCtrlOutEndpointT<usb::stm32f4::CtrlOutEndpointViaSTM32F4>    ctrlOutEndp(defaultCtrlPipe);
+static usb::stm32f4::CtrlOutEndpointViaSTM32F4                              defaultCtrlOutEndpoint(defaultHwOutEndpoint, ctrlOutEndp);
 
 /*******************************************************************************
  * Tasks
@@ -295,6 +163,7 @@ static tasks::HeartbeatT<decltype(g_uart), decltype(g_led_gn)>      heartbeat_gn
 extern "C" {
 #endif /* defined(__cplusplus) */
 
+[[noreturn]]
 void
 main(void) {
     g_led_gn.enable(gpio::GpioAccessViaSTM32F4::e_Output, gpio::GpioAccessViaSTM32F4::e_None, gpio::GpioAccessViaSTM32F4::e_Gpio);
@@ -368,6 +237,7 @@ led3_off(void) {
     g_led_bl.set(gpio::GpioPin::Off);
 }
 
+[[noreturn]]
 void
 halt(const char * const p_file, const unsigned p_line) {
     g_led_rd.enable(gpio::GpioAccessViaSTM32F4::e_Output, gpio::GpioAccessViaSTM32F4::e_None, gpio::GpioAccessViaSTM32F4::e_Gpio);
@@ -378,6 +248,7 @@ halt(const char * const p_file, const unsigned p_line) {
     while (1) { };
 }
 
+[[noreturn]]
 void
 assert_failed(uint8_t *p_file, uint32_t p_line) {
     __disable_irq();
@@ -449,6 +320,16 @@ usleep(unsigned p_usec) {
     }
     
     return 0;
+}
+
+extern const uintptr_t __stack_chk_guard = 0xa5a5a5a5;
+
+[[noreturn]]
+void
+__stack_chk_fail( ) {
+    __disable_irq();
+
+    halt("Stack Check failed.", 0);
 }
 
 #if defined(__cplusplus)

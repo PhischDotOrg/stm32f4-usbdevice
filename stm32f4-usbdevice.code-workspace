@@ -15,7 +15,8 @@
 			"__config": "cpp",
 			"mstd_type_traits": "cpp",
 			"istream": "cpp",
-			"cstring": "c"
+			"cstring": "c",
+			"initializer_list": "cpp"
 		}
 	}
 }
