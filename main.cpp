@@ -86,7 +86,7 @@ static const struct UsbConfigurationDescriptor_s {
         },
         .m_bNumInterfaces           = 2,
         .m_bConfigurationValue      = 1,
-        .m_iConfiguration           = ::usb::UsbStringDescriptorId_e::e_StrDesc_Configuration,
+        .m_iConfiguration           = 4, /* Index of m_configuration within usbStringDescriptors.m_stringDescriptorTable */
         .m_bmAttributes             = 0x80      // USB 2.0 Spec demands this Bit to always be set
                                     | 0x40,     // Set to 0x40 for Self-powered Device, 0x00 for Bus-powered
         .m_bMaxPower                = 5,        // Power consumption in Units of 2mA
@@ -100,7 +100,7 @@ static const struct UsbConfigurationDescriptor_s {
         .m_bFunctionClass           = ::usb::UsbInterfaceClass_e::e_UsbInterface_CommunicationDeviceClass,
         .m_bFunctionSubClass        = ::usb::UsbCdc_SubclassCode_e::e_UsbCdcSubclass_AbstractControl,
         .m_bFunctionProtocol        = ::usb::UsbCdc_ProtocolCode_e::e_UsbCdcProto_AT_V250,
-        .m_iFunction                = ::usb::UsbStringDescriptorId_e::e_StrDesc_Configuration
+        .m_iFunction                = 5 /* Index of m_interface within usbStringDescriptors.m_stringDescriptorTable */
     },
     .m_cdcInterface = {
         .m_bLength                  = sizeof(decltype(usbConfigurationDescriptor.m_cdcInterface)),
@@ -111,7 +111,7 @@ static const struct UsbConfigurationDescriptor_s {
         .m_bInterfaceClass          = ::usb::UsbInterfaceClass_e::e_UsbInterface_CommunicationDeviceClass,
         .m_bInterfaceSubClass       = ::usb::UsbCdc_SubclassCode_e::e_UsbCdcSubclass_AbstractControl,
         .m_bInterfaceProtocol       = ::usb::UsbCdc_ProtocolCode_e::e_UsbCdcProto_AT_V250,
-        .m_iInterface               = 0,
+        .m_iInterface               = 5, /* Index of m_interface within usbStringDescriptors.m_stringDescriptorTable */
         .m_endpoints                = {}
     },
     .m_cdcFunctDescr_Header = {
@@ -173,7 +173,7 @@ static const struct UsbConfigurationDescriptor_s {
         .m_bInterfaceClass          = ::usb::UsbInterfaceClass_e::e_UsbInterface_CdcData,
         .m_bInterfaceSubClass       = 0,
         .m_bInterfaceProtocol       = 0,
-        .m_iInterface               = 0,
+        .m_iInterface               = 5 /* Index of m_interface within usbStringDescriptors.m_stringDescriptorTable */,
         .m_endpoints                = {
             /* Index #0 */ {
                 .m_bLength          = sizeof(decltype(usbConfigurationDescriptor.m_dataInterface.m_endpoints[0])),
