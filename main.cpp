@@ -120,13 +120,10 @@ static gpio::PinT<decltype(gpio_engine_A)>  usb_pin_id(&gpio_engine_A, 10);
 
 static usb::stm32f4::UsbFullSpeedCore                               usbCore(nvic, rcc, usb_pin_dm, usb_pin_dp, usb_pin_vbus, usb_pin_id, /* p_rxFifoSzInWords = */ 256);
 static usb::stm32f4::UsbDeviceViaSTM32F4                            usbHwDevice(usbCore);
-static usb::stm32f4::InEndpointViaSTM32F4                           defaultHwInEndpoint(usbHwDevice, /* p_fifoSzInWords = */ 0x20, 0);
-static usb::stm32f4::CtrlInEndpointViaSTM32F4                       defaultHwCtrlInEndpoint(defaultHwInEndpoint);
-static usb::stm32f4::OutEndpointViaSTM32F4                          defaultHwOutEndpoint(usbHwDevice, 0);
+static usb::stm32f4::CtrlInEndpointViaSTM32F4                       defaultHwCtrlInEndpoint(usbHwDevice, /* p_fifoSzInWords = */ 0x20);
 
-static usb::stm32f4::InEndpointViaSTM32F4                           inHwEndpoint(usbHwDevice, /* p_fifoSzInWords = */ 128, 1);
-static usb::stm32f4::BulkInEndpointViaSTM32F4                       bulkInHwEndp(inHwEndpoint);
-usb::UsbBulkInEndpoint                                              bulkInEndpoint(bulkInHwEndp);
+static usb::stm32f4::BulkInEndpointViaSTM32F4                       bulkInHwEndp(usbHwDevice, /* p_fifoSzInWords = */ 128, 1);
+static usb::UsbBulkInEndpoint                                       bulkInEndpoint(bulkInHwEndp);
 
 #if defined(USB_APPLICATION_LOOPBACK)
 /* TODO I've found that increasing the buffer size beyond 951 Bytes will make things stop working. */
@@ -138,9 +135,8 @@ static usb::UsbUartApplicationT<decltype(uart_access)>              bulkOutAppli
 #endif
 
 #if defined(USB_APPLICATION_LOOPBACK) || defined(USB_APPLICATION_UART)
-static usb::stm32f4::OutEndpointViaSTM32F4                                  outHwEndpoint(usbHwDevice, 1);
 static usb::UsbBulkOutEndpointT<usb::stm32f4::BulkOutEndpointViaSTM32F4>    bulkOutEndpoint(bulkOutApplication);
-static usb::stm32f4::BulkOutEndpointViaSTM32F4                              bulkOutHwEndp(outHwEndpoint, bulkOutEndpoint);
+static usb::stm32f4::BulkOutEndpointViaSTM32F4                              bulkOutHwEndp(usbHwDevice, bulkOutEndpoint, 1);
 #endif /* defined(USB_APPLICATION_LOOPBACK) || defined(USB_APPLICATION_UART) */
 
 #if defined(USB_INTERFACE_VCP)
@@ -159,7 +155,7 @@ static usb::UsbCtrlInEndpoint                                               ctrl
 static usb::UsbControlPipe                                                  defaultCtrlPipe(genericUsbDevice, ctrlInEndp);
 
 static usb::UsbCtrlOutEndpointT<usb::stm32f4::CtrlOutEndpointViaSTM32F4>    ctrlOutEndp(defaultCtrlPipe);
-static usb::stm32f4::CtrlOutEndpointViaSTM32F4                              defaultCtrlOutEndpoint(defaultHwOutEndpoint, ctrlOutEndp);
+static usb::stm32f4::CtrlOutEndpointViaSTM32F4                              defaultCtrlOutEndpoint(usbHwDevice, ctrlOutEndp);
 
 /*******************************************************************************
  * Tasks
