@@ -128,20 +128,30 @@ static usb::stm32f4::InEndpointViaSTM32F4                           inHwEndpoint
 static usb::stm32f4::BulkInEndpointViaSTM32F4                       bulkInHwEndp(inHwEndpoint);
 usb::UsbBulkInEndpoint                                              bulkInEndpoint(bulkInHwEndp);
 
-#if 1
+#if defined(USB_APPLICATION_LOOPBACK)
 /* TODO I've found that increasing the buffer size beyond 951 Bytes will make things stop working. */
 static usb::UsbBulkOutLoopbackApplicationT<512>                     bulkOutApplication(bulkInEndpoint);
-#else
+#elif defined(USB_APPLICATION_UART)
 static usb::UsbUartApplicationT<decltype(uart_access)>              bulkOutApplication(uart_access);
+#else
+#warning No USB Application defined.
 #endif
 
-static usb::stm32f4::OutEndpointViaSTM32F4                          outHwEndpoint(usbHwDevice, 1);
+#if defined(USB_APPLICATION_LOOPBACK) || defined(USB_APPLICATION_UART)
+static usb::stm32f4::OutEndpointViaSTM32F4                                  outHwEndpoint(usbHwDevice, 1);
 static usb::UsbBulkOutEndpointT<usb::stm32f4::BulkOutEndpointViaSTM32F4>    bulkOutEndpoint(bulkOutApplication);
-static usb::stm32f4::BulkOutEndpointViaSTM32F4                      bulkOutHwEndp(outHwEndpoint, bulkOutEndpoint);
+static usb::stm32f4::BulkOutEndpointViaSTM32F4                              bulkOutHwEndp(outHwEndpoint, bulkOutEndpoint);
+#endif /* defined(USB_APPLICATION_LOOPBACK) || defined(USB_APPLICATION_UART) */
 
-static usb::UsbVcpInterface                                         usbVcpInterface(bulkOutEndpoint, bulkInEndpoint);
+#if defined(USB_INTERFACE_VCP)
+static usb::UsbVcpInterface                                         usbInterface(bulkOutEndpoint, bulkInEndpoint);
+#elif defined(USB_INTERFACE_VENDOR)
+static usb::UsbVendorInterface                                      usbInterface(bulkOutEndpoint, bulkInEndpoint);
+#else
+#error No USB Interface defined.
+#endif
 
-static usb::UsbConfigurationT<decltype(usbConfigurationDescriptor)> usbConfiguration(usbVcpInterface, usbConfigurationDescriptor);
+static usb::UsbConfigurationT<decltype(usbConfigurationDescriptor)> usbConfiguration(usbInterface, usbConfigurationDescriptor);
 
 static usb::UsbDevice                                                       genericUsbDevice(usbHwDevice, usbDeviceDescriptor, usbStringDescriptors, { &usbConfiguration });
 

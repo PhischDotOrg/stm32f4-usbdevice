@@ -13,9 +13,17 @@ extern const ::usb::UsbDeviceDescriptor_t usbDeviceDescriptor __attribute__((ali
     .m_bLength              = sizeof(::usb::UsbDeviceDescriptor_t),                     /* m_bLength */
     .m_bDescriptorType      = ::usb::UsbDescriptorTypeId_t::e_Device,                   /* m_bDescriptorType */
     .m_bcdUsb               = { 0x00, 0x02 },                                           /* m_bLength */
+#if defined(USB_INTERFACE_VCP)
     .m_bDeviceClass         = ::usb::UsbInterfaceClass_e::e_UsbInterface_Misc_EFh,      /* m_bDeviceClass */
     .m_bDeviceSubClass      = 0x02,                                                     /* m_bDeviceSubClass */
     .m_bDeviceProtocol      = 0x01,                                                     /* m_bDeviceProtocol */
+#elif defined(USB_INTERFACE_VENDOR)
+    .m_bDeviceClass         = ::usb::UsbInterfaceClass_e::e_UsbInterface_VendorSpecific,/* m_bDeviceClass */
+    .m_bDeviceSubClass      = 0x02,                                                     /* m_bDeviceSubClass */
+    .m_bDeviceProtocol      = 0x01,                                                     /* m_bDeviceProtocol */
+#else
+#error No USB Interface defined.
+#endif /* */
     .m_bMaxPacketSize0      = 64,                                                       /* m_bMaxPacketSize0 -- Should be 64 for a USB Full Speed Device. */
     .m_idVendor             = { 0xad, 0xde },                                           /* m_idVendor */
     .m_idProduct            = { 0xef, 0xbe },                                           /* m_idProduct */
@@ -42,6 +50,7 @@ extern const ::usb::UsbStringDescriptors_t usbStringDescriptors __attribute__((a
         }
 };
 
+#if defined(USB_INTERFACE_VCP)
 extern const struct UsbConfigurationDescriptor_s {
     struct ::usb::UsbConfigurationDescriptorT<void *, 0>    m_configDescrHdr;
     struct ::usb::UsbInterfaceAssociationDescriptor_s       m_iad;
@@ -176,6 +185,66 @@ extern const struct UsbConfigurationDescriptor_s {
         }
     }
 };
+#endif /* defined(USB_INTERFACE_VCP) */
+
+#if defined(USB_INTERFACE_VENDOR)
+extern const struct UsbConfigurationDescriptor_s {
+    struct ::usb::UsbConfigurationDescriptorT<void *, 0>    m_configDescrHdr;
+    struct ::usb::UsbInterfaceDescriptorT<2>                m_dataInterface;
+} __attribute__((packed)) usbConfigurationDescriptor __attribute__((aligned(4), section(".fixeddata"))) = {
+    .m_configDescrHdr = {
+        .m_bLength                  = sizeof( decltype(usbConfigurationDescriptor.m_configDescrHdr)),
+        .m_bDescriptorType          = ::usb::UsbDescriptorTypeId_e::e_Configuration,
+        .m_wTotalLength = {
+            .m_loByte               = (sizeof(decltype(usbConfigurationDescriptor)) >> 0),
+            .m_hiByte               = (sizeof(decltype(usbConfigurationDescriptor)) >> 8)
+        },
+        .m_bNumInterfaces           = 1,
+        .m_bConfigurationValue      = 1,
+        .m_iConfiguration           = 4, /* Index of m_configuration within usbStringDescriptors.m_stringDescriptorTable */
+        .m_bmAttributes             = 0x80      // USB 2.0 Spec demands this Bit to always be set
+                                    | 0x40,     // Set to 0x40 for Self-powered Device, 0x00 for Bus-powered
+        .m_bMaxPower                = 5,        // Power consumption in Units of 2mA
+        .m_interfaces               = {}
+    },
+    .m_dataInterface = {
+        .m_bLength                  = sizeof(decltype(usbConfigurationDescriptor.m_dataInterface)) - sizeof(usbConfigurationDescriptor.m_dataInterface.m_endpoints),
+        .m_bDescriptorType          = ::usb::UsbDescriptorTypeId_e::e_Interface,
+        .m_bInterfaceNumber         = 1,
+        .m_bAlternateSetting        = 0,
+        .m_bNumEndpoints            = 2,
+        .m_bInterfaceClass          = ::usb::UsbInterfaceClass_e::e_UsbInterface_VendorSpecific,
+        .m_bInterfaceSubClass       = 0,
+        .m_bInterfaceProtocol       = 0,
+        .m_iInterface               = 5, /* Index of m_interface within usbStringDescriptors.m_stringDescriptorTable */
+        .m_endpoints                = {
+            /* Index #0 */ {
+                .m_bLength          = sizeof(decltype(usbConfigurationDescriptor.m_dataInterface.m_endpoints[0])),
+                .m_bDescriptorType  = ::usb::UsbDescriptorTypeId_e::e_Endpoint,
+                .m_bEndpointAddress = 0x01,
+                .m_bmAttributes     = 2,    // Bulk
+                .m_wMaxPacketSize = {
+                    .m_loByte       = 64,
+                    .m_hiByte       = 0
+                },
+                .m_bInterval        = 0
+            },
+            /* Index #1 */ {
+                .m_bLength          = sizeof(decltype(usbConfigurationDescriptor.m_dataInterface.m_endpoints[1])),
+                .m_bDescriptorType  = ::usb::UsbDescriptorTypeId_e::e_Endpoint,
+                .m_bEndpointAddress = 0x81,
+                .m_bmAttributes     = 2,    // Bulk
+                .m_wMaxPacketSize = {
+                    .m_loByte       = 64,
+                    .m_hiByte       = 0
+                },
+                .m_bInterval        = 0
+            }
+        }
+    }    
+};
+#endif /* defined(USB_INTERFACE_VENDOR) */
+
 
 #if defined(__cplusplus)
 } /* extern "C" */
