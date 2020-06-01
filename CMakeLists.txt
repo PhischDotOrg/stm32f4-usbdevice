@@ -15,8 +15,8 @@ set(TARGET_SRC
 )
 
 # Selection of USB Interface
-# add_definitions("-DUSB_INTERFACE_VCP")
-add_definitions("-DUSB_INTERFACE_VENDOR")
+add_definitions("-DUSB_INTERFACE_VCP")
+# add_definitions("-DUSB_INTERFACE_VENDOR")
 
 # Selection of USB Application
 add_definitions("-DUSB_APPLICATION_LOOPBACK")
