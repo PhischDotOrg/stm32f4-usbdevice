@@ -17,6 +17,8 @@ There are two USB Applications implemented:
 
 The top-level [CMakeLists.txt](https://github.com/PhischDotOrg/stm32f4-usbdevice/blob/master/CMakeLists.txt) file shows how to set the mentioned pre-processor macros.
 
+For detailed Doxygen documentation, please see [https://phischdotorg.github.io/stm32f4-usbdevice](https://phischdotorg.github.io/stm32f4-usbdevice).
+
 # How to check out
 This project makes use of git's [submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules) feature. This repository is therefore more of a front-end for other code parts. In order to obtain all the needed code, please check out with the `--recursive` flag.
 
