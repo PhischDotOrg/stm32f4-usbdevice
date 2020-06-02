@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PhiSch.org - STM32F4 Library
-   &#160;<span id="projectnumber">1fe2ae1+</span>
+   &#160;<span id="projectnumber">4f22309+</span>
    </div>
    <div id="projectbrief">PhiSch.org - STM32F4 Lib</div>
   </td>
@@ -76,13 +76,18 @@ $(function() {
 <div class="title">usb::UsbHwDevice Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Interface to the Hardware-specific Driver of an USB Device.  
+ <a href="classusb_1_1_usb_hw_device.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_usb_hw_device_8hpp_source.html">common/lib/usb/include/usb/UsbHwDevice.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for usb::UsbHwDevice:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="classusb_1_1_usb_hw_device.png" usemap="#usb::UsbHwDevice_map" alt=""/>
   <map id="usb::UsbHwDevice_map" name="usb::UsbHwDevice_map">
-<area href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html" alt="usb::stm32f4::UsbDeviceViaSTM32F4" shape="rect" coords="0,56,222,80"/>
+<area href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html" title="Driver for the STM32F4 USB On-the-Go (OTG) Core in USB Device Mode." alt="usb::stm32f4::UsbDeviceViaSTM32F4" shape="rect" coords="0,56,222,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -96,23 +101,28 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad86e3a033e6b3849cbb13c1f40aa95f3"><td class="memItemLeft" align="right" valign="top"><a id="ad86e3a033e6b3849cbb13c1f40aa95f3"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>UsbHwDevice</b> (const <a class="el" href="classusb_1_1_usb_hw_device.html#a9910a064583803caf5edd525c6f6fc89">DeviceSpeed_e</a> &amp;p_deviceSpeed)</td></tr>
+<tr class="memitem:ad86e3a033e6b3849cbb13c1f40aa95f3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1_usb_hw_device.html#ad86e3a033e6b3849cbb13c1f40aa95f3">UsbHwDevice</a> (const <a class="el" href="classusb_1_1_usb_hw_device.html#a9910a064583803caf5edd525c6f6fc89">DeviceSpeed_e</a> &amp;p_deviceSpeed)</td></tr>
+<tr class="memdesc:ad86e3a033e6b3849cbb13c1f40aa95f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new USB Hardware Device Object.  <a href="classusb_1_1_usb_hw_device.html#ad86e3a033e6b3849cbb13c1f40aa95f3">More...</a><br /></td></tr>
 <tr class="separator:ad86e3a033e6b3849cbb13c1f40aa95f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a572a3bf8476d0c8d13f1d16293e678c4"><td class="memItemLeft" align="right" valign="top"><a id="a572a3bf8476d0c8d13f1d16293e678c4"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setAddress</b> (const uint8_t p_address) const =0</td></tr>
+<tr class="memitem:a020aef954123ea256d7276155f22b99a"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1_usb_hw_device.html#a020aef954123ea256d7276155f22b99a">~UsbHwDevice</a> ()</td></tr>
+<tr class="memdesc:a020aef954123ea256d7276155f22b99a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="classusb_1_1_usb_hw_device.html#a020aef954123ea256d7276155f22b99a">More...</a><br /></td></tr>
+<tr class="separator:a020aef954123ea256d7276155f22b99a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a572a3bf8476d0c8d13f1d16293e678c4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1_usb_hw_device.html#a572a3bf8476d0c8d13f1d16293e678c4">setAddress</a> (const uint8_t p_address) const =0</td></tr>
+<tr class="memdesc:a572a3bf8476d0c8d13f1d16293e678c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Address of the USB Device.  <a href="classusb_1_1_usb_hw_device.html#a572a3bf8476d0c8d13f1d16293e678c4">More...</a><br /></td></tr>
 <tr class="separator:a572a3bf8476d0c8d13f1d16293e678c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98aede98b8dcf896a32520144ec648d8"><td class="memItemLeft" align="right" valign="top"><a id="a98aede98b8dcf896a32520144ec648d8"></a>
-constexpr <a class="el" href="classusb_1_1_usb_hw_device.html#a9910a064583803caf5edd525c6f6fc89">DeviceSpeed_e</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getDeviceSpeed</b> (void)</td></tr>
-<tr class="separator:a98aede98b8dcf896a32520144ec648d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:ae62823735f7a46893b8bce48a197dbfd"><td class="memItemLeft" align="right" valign="top"><a id="ae62823735f7a46893b8bce48a197dbfd"></a>
-const <a class="el" href="classusb_1_1_usb_hw_device.html#a9910a064583803caf5edd525c6f6fc89">DeviceSpeed_e</a>&#160;</td><td class="memItemRight" valign="bottom"><b>m_deviceSpeed</b></td></tr>
+const <a class="el" href="classusb_1_1_usb_hw_device.html#a9910a064583803caf5edd525c6f6fc89">DeviceSpeed_e</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1_usb_hw_device.html#ae62823735f7a46893b8bce48a197dbfd">m_deviceSpeed</a></td></tr>
+<tr class="memdesc:ae62823735f7a46893b8bce48a197dbfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Selected USB Device Speed. <br /></td></tr>
 <tr class="separator:ae62823735f7a46893b8bce48a197dbfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Enumeration Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Interface to the Hardware-specific Driver of an USB Device. </p>
+<p>This encapsulates the Hardware-specific Device Operations needed by the hardware-independent implementation of the <a class="el" href="classusb_1_1_usb_control_pipe.html">UsbControlPipe</a>.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html" title="Driver for the STM32F4 USB On-the-Go (OTG) Core in USB Device Mode.">stm32f4::UsbDeviceViaSTM32F4</a> </dd></dl>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="a9910a064583803caf5edd525c6f6fc89"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9910a064583803caf5edd525c6f6fc89">&#9670;&nbsp;</a></span>DeviceSpeed_e</h2>
 
@@ -133,6 +143,109 @@ const <a class="el" href="classusb_1_1_usb_hw_device.html#a9910a064583803caf5edd
 <tr><td class="fieldname"><a id="a9910a064583803caf5edd525c6f6fc89adc558d9ca8bae486656328e13046bc6e"></a>e_UsbFullSpeed&#160;</td><td class="fielddoc"><p>USB Full Speed. </p>
 </td></tr>
 </table>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ad86e3a033e6b3849cbb13c1f40aa95f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad86e3a033e6b3849cbb13c1f40aa95f3">&#9670;&nbsp;</a></span>UsbHwDevice()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">usb::UsbHwDevice::UsbHwDevice </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classusb_1_1_usb_hw_device.html#a9910a064583803caf5edd525c6f6fc89">DeviceSpeed_e</a> &amp;&#160;</td>
+          <td class="paramname"><em>p_deviceSpeed</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct a new USB Hardware Device Object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p_deviceSpeed</td><td>USB Speed. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a020aef954123ea256d7276155f22b99a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a020aef954123ea256d7276155f22b99a">&#9670;&nbsp;</a></span>~UsbHwDevice()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual usb::UsbHwDevice::~UsbHwDevice </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Destructor. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a572a3bf8476d0c8d13f1d16293e678c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a572a3bf8476d0c8d13f1d16293e678c4">&#9670;&nbsp;</a></span>setAddress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void usb::UsbHwDevice::setAddress </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t&#160;</td>
+          <td class="paramname"><em>p_address</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the Address of the USB Device. </p>
+<p>Used by the <a class="el" href="classusb_1_1_usb_control_pipe.html">UsbControlPipe</a> when the USB Host sends the <em>Set Address</em> Control Request.</p>
+<dl class="section see"><dt>See also</dt><dd>UsbControlPipe::decodeDeviceRequest </dd>
+<dd>
+UsbControlPipe::UsbRequest_t::e_SetAddress</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p_address</td><td>Address of the USB Device as sent by the USB Host in the <em>Set Address</em> Control Request. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html#a92bea7addf621fb044cd11feb3170e54">usb::stm32f4::UsbDeviceViaSTM32F4</a>.</p>
 
 </div>
 </div>

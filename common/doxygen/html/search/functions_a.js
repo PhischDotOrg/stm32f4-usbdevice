@@ -1,21 +1,5 @@
 var searchData=
 [
-  ['setpacketsize_256',['setPacketSize',['../classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#a6736fca4b291e11d99e310e37d357107',1,'usb::stm32f4::OutEndpointViaSTM32F4']]],
-  ['setrxfifosz_257',['setRxFifoSz',['../classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html#af68bca9f4fedfd8c6e6c0db0ef68e32c',1,'usb::stm32f4::UsbCoreViaSTM32F4']]],
-  ['setup_258',['setup',['../classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#ac077250da20b1283f9ac26cf8e4135b0',1,'usb::stm32f4::OutEndpointViaSTM32F4']]],
-  ['setupcomplete_259',['setupComplete',['../classusb_1_1_usb_ctrl_out_endpoint.html#a23b6dd8a9b5ee2c632871d78251606ab',1,'usb::UsbCtrlOutEndpoint']]],
-  ['setupcompletedevicecallback_260',['setupCompleteDeviceCallback',['../classusb_1_1stm32f4_1_1_ctrl_out_endpoint_via_s_t_m32_f4.html#a557dd25394d58f0286a049291cbcc477',1,'usb::stm32f4::CtrlOutEndpointViaSTM32F4']]],
-  ['setupdatareceiveddevicecallback_261',['setupDataReceivedDeviceCallback',['../classusb_1_1stm32f4_1_1_ctrl_out_endpoint_via_s_t_m32_f4.html#a93f67df72217c5972a2dfb4c1132a906',1,'usb::stm32f4::CtrlOutEndpointViaSTM32F4']]],
-  ['setupmode_262',['setupMode',['../classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html#a98272b672a52b57951c4da8016041a5c',1,'usb::stm32f4::UsbCoreViaSTM32F4']]],
-  ['setupmodeinhw_263',['setupModeInHw',['../classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html#afc4704c1be0d6270734d7390c357fef2',1,'usb::stm32f4::UsbCoreViaSTM32F4']]],
-  ['setuptxfifo_264',['setupTxFifo',['../classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html#a1e3ab532f29e7fbd2012726a0230585a',1,'usb::stm32f4::UsbCoreViaSTM32F4']]],
-  ['setusbturnaroundtime_265',['setUsbTurnAroundTime',['../classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html#a5eb52418a457e201740d6ed9dec5e6ed',1,'usb::stm32f4::UsbCoreViaSTM32F4']]],
-  ['start_266',['start',['../classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html#a879effe6fc9a6d31dceaff31cb1a3742',1,'usb::stm32f4::UsbCoreViaSTM32F4']]],
-  ['startphy_267',['startPhy',['../classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html#a59f81a6b799e1b8481602ee15bf7d49a',1,'usb::stm32f4::UsbCoreViaSTM32F4']]],
-  ['starttransceiver_268',['startTransceiver',['../classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html#a3756904e729296d837da0a82e7bd0950',1,'usb::stm32f4::UsbCoreViaSTM32F4']]],
-  ['starttx_269',['startTx',['../classusb_1_1stm32f4_1_1_in_endpoint_via_s_t_m32_f4.html#aeae75542f8cea7bd8af6ba3113b614c6',1,'usb::stm32f4::InEndpointViaSTM32F4']]],
-  ['stop_270',['stop',['../classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html#ad126dd9920c327a10e2acfec238cb165',1,'usb::stm32f4::UsbCoreViaSTM32F4']]],
-  ['stopphy_271',['stopPhy',['../classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html#a4576695f77ce72c047432c64f6578031',1,'usb::stm32f4::UsbCoreViaSTM32F4']]],
-  ['stoptransceiver_272',['stopTransceiver',['../classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html#a4ba1c5a2bcb9cd300b2b5db66c888831',1,'usb::stm32f4::UsbCoreViaSTM32F4']]],
-  ['suspendphy_273',['suspendPhy',['../classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html#af1c7fbbc13b1298102692d8793a78dbc',1,'usb::stm32f4::UsbCoreViaSTM32F4']]]
+  ['packetreceived_315',['packetReceived',['../classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#af150ca6700f0b7a572658ed64fb67a57',1,'usb::stm32f4::OutEndpointViaSTM34F4Callback']]],
+  ['performreset_316',['performReset',['../classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html#ae455f459b1b34ab47f266732ffad9d4f',1,'usb::stm32f4::UsbCoreViaSTM32F4']]]
 ];

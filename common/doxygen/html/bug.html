@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PhiSch.org - STM32F4 Library
-   &#160;<span id="projectnumber">1fe2ae1+</span>
+   &#160;<span id="projectnumber">4f22309+</span>
    </div>
    <div id="projectbrief">PhiSch.org - STM32F4 Lib</div>
   </td>
@@ -85,7 +85,11 @@ $(function() {
 <dt>Member <a class="el" href="classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html#ab1ecb4f63a2f8c68f00983b0458f1b43">usb::stm32f4::UsbCoreViaSTM32F4::wakeUpDetectedIrq</a>  (void) const</dt>
 <dd><a class="anchor" id="_bug000008"></a>From the Datasheed it seems this is the complement to the <em>USB Suspend</em> IRQ (<a class="el" href="classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html#a1e49824b11b06f37955e30a72ccc2137a87a77f40e07c5491a25b02e50a839f95" title="USB Suspend IRQ.">e_Suspend</a>). We should probably call <a class="el" href="classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html#a13dcc6cce6f7e58b1c33746878267060" title="Resumes the USB PHY.">resumePhy</a> here. </dd>
 <dt>Member <a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html#aa20e02b1d294cecb3caebce000279450">usb::stm32f4::UsbDeviceViaSTM32F4::handleUsbSuspendIrq</a>  (void) const</dt>
-<dd><a class="anchor" id="_bug000009"></a>For USB-powered devices, it would be good to reduce power consumption even more, e.g. by shutting of the µC. This however is not (yet) supported.</dd>
+<dd><a class="anchor" id="_bug000011"></a>For USB-powered devices, it would be good to reduce power consumption even more, e.g. by shutting of the µC. This however is not (yet) supported. </dd>
+<dt>Member <a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html#ae9a97ff89e46b8553d65b6c34e89d1a8">usb::stm32f4::UsbDeviceViaSTM32F4::isSuspendableState</a>  (void) const</dt>
+<dd><a class="anchor" id="_bug000009"></a>Determining whether a USB Device can be suspended is not yet supported. </dd>
+<dt>Member <a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html#adebc8c9e050d45f76153529573ace441">usb::stm32f4::UsbDeviceViaSTM32F4::stop</a>  (void) const</dt>
+<dd><a class="anchor" id="_bug000010"></a>This method should probably disable the USB Device Interrupts but it currently doesn't.</dd>
 </dl>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->

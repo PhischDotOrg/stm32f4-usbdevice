@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['wakeupdetectedirq_281',['wakeUpDetectedIrq',['../classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html#ab1ecb4f63a2f8c68f00983b0458f1b43',1,'usb::stm32f4::UsbCoreViaSTM32F4']]],
-  ['write_282',['write',['../classusb_1_1stm32f4_1_1_in_endpoint_via_s_t_m32_f4.html#ac1b8f3c1b614db0485cbaa18ac964b32',1,'usb::stm32f4::InEndpointViaSTM32F4']]],
-  ['writestring_283',['writeString',['../classusb_1_1stm32f4_1_1_in_endpoint_via_s_t_m32_f4.html#a37089e609d07cad6f17b429fa37c231f',1,'usb::stm32f4::InEndpointViaSTM32F4']]]
+  ['terminate_348',['terminate',['../classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4_gpio_helper_t.html#a2e02d031a329a7765ef15c6b48cff4a6',1,'usb::stm32f4::UsbCoreViaSTM32F4GpioHelperT::terminate()'],['../classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html#a725cea85a05155fdde94de98fb148421',1,'usb::stm32f4::UsbCoreViaSTM32F4::terminate()']]],
+  ['transfercomplete_349',['transferComplete',['../classusb_1_1_usb_ctrl_out_endpoint.html#ac671265a75cc7ce602958ab991a2a12b',1,'usb::UsbCtrlOutEndpoint::transferComplete()'],['../classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#ae21f69208352644fcbdb1c02545efb2c',1,'usb::stm32f4::OutEndpointViaSTM34F4Callback::transferComplete(const size_t p_numBytes) const =0'],['../classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#a99c4f7697fd1b0fd8707226ed33f8a6b',1,'usb::stm32f4::OutEndpointViaSTM34F4Callback::transferComplete(void)'],['../classusb_1_1stm32f4_1_1_ctrl_out_endpoint_via_s_t_m32_f4.html#a2c9ffb224d9ace8af03f5ed2eb388a62',1,'usb::stm32f4::CtrlOutEndpointViaSTM32F4::transferComplete()'],['../classusb_1_1stm32f4_1_1_bulk_out_endpoint_via_s_t_m32_f4.html#a897a620f4c41fc0619690e32d6b488fe',1,'usb::stm32f4::BulkOutEndpointViaSTM32F4::transferComplete()']]],
+  ['transfercompletedevicecallback_350',['transferCompleteDeviceCallback',['../classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#addd4409e9bbdbf3b6adbbb42274ef2d4',1,'usb::stm32f4::OutEndpointViaSTM32F4']]],
+  ['txdata_351',['txData',['../classusb_1_1stm32f4_1_1_in_endpoint_via_s_t_m32_f4.html#a5e06c0c59ec4caffd13061e88be82c7d',1,'usb::stm32f4::InEndpointViaSTM32F4']]],
+  ['txstring_352',['txString',['../classusb_1_1stm32f4_1_1_in_endpoint_via_s_t_m32_f4.html#a8637e2d3f962351e12b3d4e63e072021',1,'usb::stm32f4::InEndpointViaSTM32F4']]]
 ];

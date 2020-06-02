@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PhiSch.org - STM32F4 Library
-   &#160;<span id="projectnumber">1fe2ae1+</span>
+   &#160;<span id="projectnumber">4f22309+</span>
    </div>
    <div id="projectbrief">PhiSch.org - STM32F4 Lib</div>
   </td>
@@ -74,17 +74,30 @@ $(function() {
 <div class="title">usb::stm32f4::OutEndpointViaSTM34F4Callback::DataBuffer_s Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Structure to describe an OUT Endpoint Data Buffer.  
+ <a href="structusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback_1_1_data_buffer__s.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_out_endpoint_via_s_t_m32_f4_8hpp_source.html">common/stm32f4/usb/include/usb/OutEndpointViaSTM32F4.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:af0c583c612fe29f4a7d68e953dd43ac5"><td class="memItemLeft" align="right" valign="top"><a id="af0c583c612fe29f4a7d68e953dd43ac5"></a>
-uint32_t *&#160;</td><td class="memItemRight" valign="bottom"><b>m_buffer</b></td></tr>
+uint32_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback_1_1_data_buffer__s.html#af0c583c612fe29f4a7d68e953dd43ac5">m_buffer</a></td></tr>
+<tr class="memdesc:af0c583c612fe29f4a7d68e953dd43ac5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to RAM Buffer that can hold OUT Data. <br /></td></tr>
 <tr class="separator:af0c583c612fe29f4a7d68e953dd43ac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f9630a243c942a978f9ce83b645d942"><td class="memItemLeft" align="right" valign="top"><a id="a4f9630a243c942a978f9ce83b645d942"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_numWords</b></td></tr>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback_1_1_data_buffer__s.html#a4f9630a243c942a978f9ce83b645d942">m_numWords</a></td></tr>
+<tr class="memdesc:a4f9630a243c942a978f9ce83b645d942"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of Buffer pointed to by <a class="el" href="structusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback_1_1_data_buffer__s.html#af0c583c612fe29f4a7d68e953dd43ac5" title="Pointer to RAM Buffer that can hold OUT Data.">m_buffer</a> in units of Words (4-Bytes). <br /></td></tr>
 <tr class="separator:a4f9630a243c942a978f9ce83b645d942"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Structure to describe an OUT Endpoint Data Buffer. </p>
+<p>This structure is used to describe the RAM Data Buffer for an OUT transfer.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#a9caf491009dd3f0c2f0084117b4bca06" title="Get Information on the Endpoint&#39;s Data Buffer.">getDataBuffer</a> </dd>
+<dd>
+<a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#aada712b581a3031c27983864be4eca18" title="Set the Data Buffer object.">setDataBuffer</a> </dd></dl>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>common/stm32f4/usb/include/usb/<a class="el" href="_out_endpoint_via_s_t_m32_f4_8hpp_source.html">OutEndpointViaSTM32F4.hpp</a></li>
 </ul>
 </div><!-- contents -->

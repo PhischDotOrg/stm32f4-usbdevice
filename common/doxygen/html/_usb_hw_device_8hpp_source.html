@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PhiSch.org - STM32F4 Library
-   &#160;<span id="projectnumber">1fe2ae1+</span>
+   &#160;<span id="projectnumber">4f22309+</span>
    </div>
    <div id="projectbrief">PhiSch.org - STM32F4 Lib</div>
   </td>
@@ -82,49 +82,47 @@ $(function() {
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span>usb {</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">/*******************************************************************************</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> ******************************************************************************/</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classusb_1_1_usb_hw_device.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="classusb_1_1_usb_hw_device.html">UsbHwDevice</a> {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">enum</span> <a class="code" href="classusb_1_1_usb_hw_device.html#a9910a064583803caf5edd525c6f6fc89">DeviceSpeed_e</a> {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="comment">/* FIXME USB High Speed not yet supported. */</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classusb_1_1_usb_hw_device.html#a9910a064583803caf5edd525c6f6fc89">   25</a></span>&#160;<span class="preprocessor">#if 0</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        e_UsbHighSpeed = 0x0,</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <a class="code" href="classusb_1_1_usb_hw_device.html#a9910a064583803caf5edd525c6f6fc89aa4ac92f3f051dc958d8eea6052c43cfb">e_UsbUnknown</a>   = 0x1,   </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <a class="code" href="classusb_1_1_usb_hw_device.html#a9910a064583803caf5edd525c6f6fc89adc558d9ca8bae486656328e13046bc6e">e_UsbFullSpeed</a> = 0x3</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    };</div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classusb_1_1_usb_hw_device.html#a9910a064583803caf5edd525c6f6fc89aa4ac92f3f051dc958d8eea6052c43cfb">   34</a></span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="classusb_1_1_usb_hw_device.html">UsbHwDevice</a>(<span class="keyword">const</span> <a class="code" href="classusb_1_1_usb_hw_device.html#a9910a064583803caf5edd525c6f6fc89">DeviceSpeed_e</a> &amp;p_deviceSpeed) : m_deviceSpeed(p_deviceSpeed) {</div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classusb_1_1_usb_hw_device.html#a9910a064583803caf5edd525c6f6fc89adc558d9ca8bae486656328e13046bc6e">   36</a></span>&#160;        </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    };</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classusb_1_1_usb_hw_device.html">UsbHwDevice</a>() {};</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> setAddress(<span class="keyword">const</span> uint8_t p_address) <span class="keyword">const</span> = 0;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    constexpr <a class="code" href="classusb_1_1_usb_hw_device.html#a9910a064583803caf5edd525c6f6fc89">DeviceSpeed_e</a> getDeviceSpeed(<span class="keywordtype">void</span>) {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">return</span> this-&gt;m_deviceSpeed;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    }</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">const</span> <a class="code" href="classusb_1_1_usb_hw_device.html#a9910a064583803caf5edd525c6f6fc89">DeviceSpeed_e</a> m_deviceSpeed;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;};</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">/*******************************************************************************</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment"> ******************************************************************************/</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;} <span class="comment">/* namespace usb */</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _USB_HW_DEVICE_HPP_D91A525D_4D15_4A10_96BA_9D39402CFB26 */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">/***************************************************************************/</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classusb_1_1_usb_hw_device.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="classusb_1_1_usb_hw_device.html">UsbHwDevice</a> {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classusb_1_1_usb_hw_device.html#a9910a064583803caf5edd525c6f6fc89">   28</a></span>&#160;    <span class="keyword">enum</span> <a class="code" href="classusb_1_1_usb_hw_device.html#a9910a064583803caf5edd525c6f6fc89">DeviceSpeed_e</a> {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="comment">/* FIXME USB High Speed not yet supported. */</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        e_UsbHighSpeed = 0x0,</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classusb_1_1_usb_hw_device.html#a9910a064583803caf5edd525c6f6fc89aa4ac92f3f051dc958d8eea6052c43cfb">   35</a></span>&#160;        <a class="code" href="classusb_1_1_usb_hw_device.html#a9910a064583803caf5edd525c6f6fc89aa4ac92f3f051dc958d8eea6052c43cfb">e_UsbUnknown</a>   = 0x1,   </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classusb_1_1_usb_hw_device.html#a9910a064583803caf5edd525c6f6fc89adc558d9ca8bae486656328e13046bc6e">   37</a></span>&#160;        <a class="code" href="classusb_1_1_usb_hw_device.html#a9910a064583803caf5edd525c6f6fc89adc558d9ca8bae486656328e13046bc6e">e_UsbFullSpeed</a> = 0x3</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    };</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classusb_1_1_usb_hw_device.html#ad86e3a033e6b3849cbb13c1f40aa95f3">   45</a></span>&#160;    <a class="code" href="classusb_1_1_usb_hw_device.html#ad86e3a033e6b3849cbb13c1f40aa95f3">UsbHwDevice</a>(<span class="keyword">const</span> <a class="code" href="classusb_1_1_usb_hw_device.html#a9910a064583803caf5edd525c6f6fc89">DeviceSpeed_e</a> &amp;p_deviceSpeed) : <a class="code" href="classusb_1_1_usb_hw_device.html#ae62823735f7a46893b8bce48a197dbfd">m_deviceSpeed</a>(p_deviceSpeed) {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    };</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classusb_1_1_usb_hw_device.html#a020aef954123ea256d7276155f22b99a">   53</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classusb_1_1_usb_hw_device.html#a020aef954123ea256d7276155f22b99a">~UsbHwDevice</a>() {};</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classusb_1_1_usb_hw_device.html#a572a3bf8476d0c8d13f1d16293e678c4">setAddress</a>(<span class="keyword">const</span> uint8_t p_address) <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="classusb_1_1_usb_hw_device.html#ae62823735f7a46893b8bce48a197dbfd">   69</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="classusb_1_1_usb_hw_device.html#a9910a064583803caf5edd525c6f6fc89">DeviceSpeed_e</a> <a class="code" href="classusb_1_1_usb_hw_device.html#ae62823735f7a46893b8bce48a197dbfd">m_deviceSpeed</a>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;};</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">/*******************************************************************************</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment"> ******************************************************************************/</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;} <span class="comment">/* namespace usb */</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _USB_HW_DEVICE_HPP_D91A525D_4D15_4A10_96BA_9D39402CFB26 */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassusb_1_1_usb_hw_device_html_a9910a064583803caf5edd525c6f6fc89"><div class="ttname"><a href="classusb_1_1_usb_hw_device.html#a9910a064583803caf5edd525c6f6fc89">usb::UsbHwDevice::DeviceSpeed_e</a></div><div class="ttdeci">DeviceSpeed_e</div><div class="ttdoc">USB Device Speed.</div><div class="ttdef"><b>Definition:</b> UsbHwDevice.hpp:25</div></div>
-<div class="ttc" id="aclassusb_1_1_usb_hw_device_html_a9910a064583803caf5edd525c6f6fc89aa4ac92f3f051dc958d8eea6052c43cfb"><div class="ttname"><a href="classusb_1_1_usb_hw_device.html#a9910a064583803caf5edd525c6f6fc89aa4ac92f3f051dc958d8eea6052c43cfb">usb::UsbHwDevice::e_UsbUnknown</a></div><div class="ttdeci">@ e_UsbUnknown</div><div class="ttdoc">USB Speed is unknown.</div><div class="ttdef"><b>Definition:</b> UsbHwDevice.hpp:34</div></div>
-<div class="ttc" id="aclassusb_1_1_usb_hw_device_html"><div class="ttname"><a href="classusb_1_1_usb_hw_device.html">usb::UsbHwDevice</a></div><div class="ttdef"><b>Definition:</b> UsbHwDevice.hpp:15</div></div>
-<div class="ttc" id="aclassusb_1_1_usb_hw_device_html_a9910a064583803caf5edd525c6f6fc89adc558d9ca8bae486656328e13046bc6e"><div class="ttname"><a href="classusb_1_1_usb_hw_device.html#a9910a064583803caf5edd525c6f6fc89adc558d9ca8bae486656328e13046bc6e">usb::UsbHwDevice::e_UsbFullSpeed</a></div><div class="ttdeci">@ e_UsbFullSpeed</div><div class="ttdoc">USB Full Speed.</div><div class="ttdef"><b>Definition:</b> UsbHwDevice.hpp:36</div></div>
+<div class="ttc" id="aclassusb_1_1_usb_hw_device_html_a9910a064583803caf5edd525c6f6fc89"><div class="ttname"><a href="classusb_1_1_usb_hw_device.html#a9910a064583803caf5edd525c6f6fc89">usb::UsbHwDevice::DeviceSpeed_e</a></div><div class="ttdeci">DeviceSpeed_e</div><div class="ttdoc">USB Device Speed.</div><div class="ttdef"><b>Definition:</b> UsbHwDevice.hpp:28</div></div>
+<div class="ttc" id="aclassusb_1_1_usb_hw_device_html_a020aef954123ea256d7276155f22b99a"><div class="ttname"><a href="classusb_1_1_usb_hw_device.html#a020aef954123ea256d7276155f22b99a">usb::UsbHwDevice::~UsbHwDevice</a></div><div class="ttdeci">virtual ~UsbHwDevice()</div><div class="ttdoc">Destructor.</div><div class="ttdef"><b>Definition:</b> UsbHwDevice.hpp:53</div></div>
+<div class="ttc" id="aclassusb_1_1_usb_hw_device_html_a572a3bf8476d0c8d13f1d16293e678c4"><div class="ttname"><a href="classusb_1_1_usb_hw_device.html#a572a3bf8476d0c8d13f1d16293e678c4">usb::UsbHwDevice::setAddress</a></div><div class="ttdeci">virtual void setAddress(const uint8_t p_address) const =0</div><div class="ttdoc">Set the Address of the USB Device.</div></div>
+<div class="ttc" id="aclassusb_1_1_usb_hw_device_html_a9910a064583803caf5edd525c6f6fc89aa4ac92f3f051dc958d8eea6052c43cfb"><div class="ttname"><a href="classusb_1_1_usb_hw_device.html#a9910a064583803caf5edd525c6f6fc89aa4ac92f3f051dc958d8eea6052c43cfb">usb::UsbHwDevice::e_UsbUnknown</a></div><div class="ttdeci">@ e_UsbUnknown</div><div class="ttdoc">USB Speed is unknown.</div><div class="ttdef"><b>Definition:</b> UsbHwDevice.hpp:35</div></div>
+<div class="ttc" id="aclassusb_1_1_usb_hw_device_html_ad86e3a033e6b3849cbb13c1f40aa95f3"><div class="ttname"><a href="classusb_1_1_usb_hw_device.html#ad86e3a033e6b3849cbb13c1f40aa95f3">usb::UsbHwDevice::UsbHwDevice</a></div><div class="ttdeci">UsbHwDevice(const DeviceSpeed_e &amp;p_deviceSpeed)</div><div class="ttdoc">Construct a new USB Hardware Device Object.</div><div class="ttdef"><b>Definition:</b> UsbHwDevice.hpp:45</div></div>
+<div class="ttc" id="aclassusb_1_1_usb_hw_device_html"><div class="ttname"><a href="classusb_1_1_usb_hw_device.html">usb::UsbHwDevice</a></div><div class="ttdoc">Interface to the Hardware-specific Driver of an USB Device.</div><div class="ttdef"><b>Definition:</b> UsbHwDevice.hpp:20</div></div>
+<div class="ttc" id="aclassusb_1_1_usb_hw_device_html_a9910a064583803caf5edd525c6f6fc89adc558d9ca8bae486656328e13046bc6e"><div class="ttname"><a href="classusb_1_1_usb_hw_device.html#a9910a064583803caf5edd525c6f6fc89adc558d9ca8bae486656328e13046bc6e">usb::UsbHwDevice::e_UsbFullSpeed</a></div><div class="ttdeci">@ e_UsbFullSpeed</div><div class="ttdoc">USB Full Speed.</div><div class="ttdef"><b>Definition:</b> UsbHwDevice.hpp:37</div></div>
+<div class="ttc" id="aclassusb_1_1_usb_hw_device_html_ae62823735f7a46893b8bce48a197dbfd"><div class="ttname"><a href="classusb_1_1_usb_hw_device.html#ae62823735f7a46893b8bce48a197dbfd">usb::UsbHwDevice::m_deviceSpeed</a></div><div class="ttdeci">const DeviceSpeed_e m_deviceSpeed</div><div class="ttdoc">Selected USB Device Speed.</div><div class="ttdef"><b>Definition:</b> UsbHwDevice.hpp:69</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

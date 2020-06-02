@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PhiSch.org - STM32F4 Library
-   &#160;<span id="projectnumber">1fe2ae1+</span>
+   &#160;<span id="projectnumber">4f22309+</span>
    </div>
    <div id="projectbrief">PhiSch.org - STM32F4 Lib</div>
   </td>
@@ -505,7 +505,7 @@ Static Private Attributes</h2></td></tr>
 
 <p>Construct a new <a class="el" href="classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html" title="Driver for the STM32F4 USB Core.">UsbCoreViaSTM32F4</a> object. </p>
 <p>This constructor is used from the helper sub-class sets up the references to the Hardware addresses based on the desired USB Mode (High Speed vs. Full Speed).</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4_from_address_pointer_t.html">UsbCoreViaSTM32F4FromAddressPointerT</a></dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4_from_address_pointer_t.html" title="Utility class to create a UsbCoreViaSTM32F4 object from an address.">UsbCoreViaSTM32F4FromAddressPointerT</a></dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">p_usbCore</td><td>Pointer to USB Core's Registers. </td></tr>
@@ -542,7 +542,7 @@ Static Private Attributes</h2></td></tr>
 
 <p>Destroy the <a class="el" href="classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html" title="Driver for the STM32F4 USB Core.">UsbCoreViaSTM32F4</a> object. </p>
 <p>Virtual because the class is intended to be sub-classed.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4_from_address_pointer_t.html">UsbCoreViaSTM32F4FromAddressPointerT</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4_from_address_pointer_t.html" title="Utility class to create a UsbCoreViaSTM32F4 object from an address.">UsbCoreViaSTM32F4FromAddressPointerT</a> </dd></dl>
 
 </div>
 </div>
@@ -791,7 +791,7 @@ Static Private Attributes</h2></td></tr>
 
 <p>Get the Base Address of the USB Core's Registers. </p>
 <p>Used by the Mode-dependent class to figure out the Base Address of the Mode-specific registers.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html">UsbDeviceViaSTM32F4</a></dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html" title="Driver for the STM32F4 USB On-the-Go (OTG) Core in USB Device Mode.">UsbDeviceViaSTM32F4</a></dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>constexpr intptr_t Base Address of the USB Core Registers. </dd></dl>
 
 </div>
@@ -843,7 +843,7 @@ Static Private Attributes</h2></td></tr>
 
 <p>USB Core Interrupt Handler. </p>
 <p>Handles the USB On-the-Go (OTG) Core's Interrupts as signalled in the <code>GINTSTS</code> register. This handler will process the interrupts valid for both Host- and Device-Mode.</p>
-<p>If a valid USB Device Callback is registered in <a class="el" href="classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html#a11e1d40e93b17b8a42aba11c8035e953" title="Reference to the USB Device Mode Callback Object.">m_usbDevice</a>, then further processing of Device-specific interrupts is handled in the <a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html">UsbDeviceViaSTM32F4</a> object.</p>
+<p>If a valid USB Device Callback is registered in <a class="el" href="classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html#a11e1d40e93b17b8a42aba11c8035e953" title="Reference to the USB Device Mode Callback Object.">m_usbDevice</a>, then further processing of Device-specific interrupts is handled in the <a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html" title="Driver for the STM32F4 USB On-the-Go (OTG) Core in USB Device Mode.">UsbDeviceViaSTM32F4</a> object.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html#a7dc7042ac84afd01fb3143696a203efa" title="USB Core Interrupt Handlers.">m_irq_handler</a> </dd></dl>
 
 </div>
@@ -996,6 +996,7 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Initialize the USB Core. </p>
+<p>This method will intialize the Hardware by calling <a class="el" href="classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html#a27ee8785d34bcdfd8baa4ece56cc2118" title="Resets the USB Core.">reset</a> internally. </p>
 
 </div>
 </div>
@@ -1065,7 +1066,7 @@ Static Private Attributes</h2></td></tr>
 <p>While this would not be required, the pattern is used to discourage calls that would not be needed otherwise.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">p_device</td><td><a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html">UsbDeviceViaSTM32F4</a> object to be used as a callback.</td></tr>
+    <tr><td class="paramname">p_device</td><td><a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html" title="Driver for the STM32F4 USB On-the-Go (OTG) Core in USB Device Mode.">UsbDeviceViaSTM32F4</a> object to be used as a callback.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1090,7 +1091,8 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Resets the USB Core. </p>
-<p>Performs a reset of the USB Core's Hardware. </p>
+<p>Performs a reset of the USB Core's Hardware.</p>
+<p>Internally, this method uses <a class="el" href="classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html#ae455f459b1b34ab47f266732ffad9d4f" title="Performs a partial reset of the USB Hardware.">performReset</a> with the <code>CSRST</code> flag to reset the Device Hardware. </p>
 
 </div>
 </div>
@@ -1186,7 +1188,7 @@ Static Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html">UsbDeviceViaSTM32F4</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html" title="Driver for the STM32F4 USB On-the-Go (OTG) Core in USB Device Mode.">UsbDeviceViaSTM32F4</a> </dd>
 <dd>
 <a class="el" href="classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html#afc4704c1be0d6270734d7390c357fef2" title="Set up the USB Mode in the Hardware.">setupModeInHw</a> </dd></dl>
 
@@ -1556,12 +1558,6 @@ Static Private Attributes</h2></td></tr>
 <p>Unregister USB Device Mode specific Callback Object. </p>
 <p>This method is only allowed to be called if if an object has been registered before.</p>
 <p>While this would not be required, the pattern is used to discourage calls that would not be needed otherwise.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">p_device</td><td><a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html">UsbDeviceViaSTM32F4</a> be unregistered as a callback.</td></tr>
-  </table>
-  </dd>
-</dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html#ac2f5988fbb4bc8037d6e647c0ad621dc" title="Register USB Device Mode specific Callback Object.">registerDevice</a> </dd></dl>
 
 </div>
@@ -1722,11 +1718,11 @@ Static Private Attributes</h2></td></tr>
 <li>common/stm32f4/usb/UsbCoreViaSTM32F4.cpp</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclassusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4_html_a5061e18cc35db5fa85a8b421db06256e"><div class="ttname"><a href="classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html#a5061e18cc35db5fa85a8b421db06256e">usb::stm32f4::UsbCoreViaSTM32F4::handleSessionRequest</a></div><div class="ttdeci">void handleSessionRequest(void) const</div><div class="ttdoc">Handle the Session Request IRQ.</div><div class="ttdef"><b>Definition:</b> UsbCoreViaSTM32F4.cpp:415</div></div>
-<div class="ttc" id="aclassusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4_html_a9d8f2df39c69f1a59242eb537b4c0714"><div class="ttname"><a href="classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html#a9d8f2df39c69f1a59242eb537b4c0714">usb::stm32f4::UsbCoreViaSTM32F4::handleModeMismatchIrq</a></div><div class="ttdeci">void handleModeMismatchIrq(void) const</div><div class="ttdoc">Handle the USB Mode Mismatch IRQ.</div><div class="ttdef"><b>Definition:</b> UsbCoreViaSTM32F4.cpp:389</div></div>
-<div class="ttc" id="aclassusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4_html_ab1ecb4f63a2f8c68f00983b0458f1b43"><div class="ttname"><a href="classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html#ab1ecb4f63a2f8c68f00983b0458f1b43">usb::stm32f4::UsbCoreViaSTM32F4::wakeUpDetectedIrq</a></div><div class="ttdeci">void wakeUpDetectedIrq(void) const</div><div class="ttdoc">Handle the Wake-up Detected IRQ.</div><div class="ttdef"><b>Definition:</b> UsbCoreViaSTM32F4.cpp:400</div></div>
-<div class="ttc" id="aclassusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4_html_a3a6ed2d364d4e3653db2d10847aa098f"><div class="ttname"><a href="classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html#a3a6ed2d364d4e3653db2d10847aa098f">usb::stm32f4::UsbCoreViaSTM32F4::handleOtgIrq</a></div><div class="ttdeci">void handleOtgIrq(void) const</div><div class="ttdoc">USB Core On-the-Go (OTG) Interrupt Handler.</div><div class="ttdef"><b>Definition:</b> UsbCoreViaSTM32F4.cpp:364</div></div>
-<div class="ttc" id="aclassusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4_html_a7167cab2124f0f210442c42ae94c2d63"><div class="ttname"><a href="classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html#a7167cab2124f0f210442c42ae94c2d63">usb::stm32f4::UsbCoreViaSTM32F4::handleSessionEnd</a></div><div class="ttdeci">void handleSessionEnd(void) const</div><div class="ttdoc">Handle the Session End IRQ.</div><div class="ttdef"><b>Definition:</b> UsbCoreViaSTM32F4.cpp:324</div></div>
+<div class="ttc" id="aclassusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4_html_a5061e18cc35db5fa85a8b421db06256e"><div class="ttname"><a href="classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html#a5061e18cc35db5fa85a8b421db06256e">usb::stm32f4::UsbCoreViaSTM32F4::handleSessionRequest</a></div><div class="ttdeci">void handleSessionRequest(void) const</div><div class="ttdoc">Handle the Session Request IRQ.</div><div class="ttdef"><b>Definition:</b> UsbCoreViaSTM32F4.cpp:419</div></div>
+<div class="ttc" id="aclassusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4_html_a9d8f2df39c69f1a59242eb537b4c0714"><div class="ttname"><a href="classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html#a9d8f2df39c69f1a59242eb537b4c0714">usb::stm32f4::UsbCoreViaSTM32F4::handleModeMismatchIrq</a></div><div class="ttdeci">void handleModeMismatchIrq(void) const</div><div class="ttdoc">Handle the USB Mode Mismatch IRQ.</div><div class="ttdef"><b>Definition:</b> UsbCoreViaSTM32F4.cpp:393</div></div>
+<div class="ttc" id="aclassusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4_html_ab1ecb4f63a2f8c68f00983b0458f1b43"><div class="ttname"><a href="classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html#ab1ecb4f63a2f8c68f00983b0458f1b43">usb::stm32f4::UsbCoreViaSTM32F4::wakeUpDetectedIrq</a></div><div class="ttdeci">void wakeUpDetectedIrq(void) const</div><div class="ttdoc">Handle the Wake-up Detected IRQ.</div><div class="ttdef"><b>Definition:</b> UsbCoreViaSTM32F4.cpp:404</div></div>
+<div class="ttc" id="aclassusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4_html_a3a6ed2d364d4e3653db2d10847aa098f"><div class="ttname"><a href="classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html#a3a6ed2d364d4e3653db2d10847aa098f">usb::stm32f4::UsbCoreViaSTM32F4::handleOtgIrq</a></div><div class="ttdeci">void handleOtgIrq(void) const</div><div class="ttdoc">USB Core On-the-Go (OTG) Interrupt Handler.</div><div class="ttdef"><b>Definition:</b> UsbCoreViaSTM32F4.cpp:368</div></div>
+<div class="ttc" id="aclassusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4_html_a7167cab2124f0f210442c42ae94c2d63"><div class="ttname"><a href="classusb_1_1stm32f4_1_1_usb_core_via_s_t_m32_f4.html#a7167cab2124f0f210442c42ae94c2d63">usb::stm32f4::UsbCoreViaSTM32F4::handleSessionEnd</a></div><div class="ttdeci">void handleSessionEnd(void) const</div><div class="ttdoc">Handle the Session End IRQ.</div><div class="ttdef"><b>Definition:</b> UsbCoreViaSTM32F4.cpp:328</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

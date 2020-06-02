@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PhiSch.org - STM32F4 Library
-   &#160;<span id="projectnumber">1fe2ae1+</span>
+   &#160;<span id="projectnumber">4f22309+</span>
    </div>
    <div id="projectbrief">PhiSch.org - STM32F4 Lib</div>
   </td>
@@ -69,7 +69,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-types">Private Types</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
@@ -80,6 +79,11 @@ $(function() {
 <div class="title">usb::stm32f4::OutEndpointViaSTM32F4 Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>OUT Endpoint driver for STM32F4.  
+ <a href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_out_endpoint_via_s_t_m32_f4_8hpp_source.html">common/stm32f4/usb/include/usb/OutEndpointViaSTM32F4.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -89,37 +93,45 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Constructor/Destructor.</div></td></tr>
 <tr class="memitem:a83fc23aceb074205b4c1bf3fb5cadac2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#a83fc23aceb074205b4c1bf3fb5cadac2">OutEndpointViaSTM32F4</a> (<a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html">UsbDeviceViaSTM32F4</a> &amp;p_usbDevice, const unsigned p_endpointNumber)</td></tr>
 <tr class="memdesc:a83fc23aceb074205b4c1bf3fb5cadac2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#a83fc23aceb074205b4c1bf3fb5cadac2">More...</a><br /></td></tr>
 <tr class="separator:a83fc23aceb074205b4c1bf3fb5cadac2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f6d873ec06fc520c0cb8c021e15fcb2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#a7f6d873ec06fc520c0cb8c021e15fcb2">~OutEndpointViaSTM32F4</a> ()</td></tr>
 <tr class="memdesc:a7f6d873ec06fc520c0cb8c021e15fcb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#a7f6d873ec06fc520c0cb8c021e15fcb2">More...</a><br /></td></tr>
 <tr class="separator:a7f6d873ec06fc520c0cb8c021e15fcb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22c618b6e9a2b16c7cc60f19a2d6aafa"><td class="memItemLeft" align="right" valign="top"><a id="a22c618b6e9a2b16c7cc60f19a2d6aafa"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>registerEndpointCallback</b> (<a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html">OutEndpointViaSTM34F4Callback</a> &amp;p_endpointCallback)</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Interface to the Endpoint-type specific Classes.</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Interface to the <a class="el" href="classusb_1_1stm32f4_1_1_ctrl_out_endpoint_via_s_t_m32_f4.html" title="Control OUT Endpoint Driver for STM32F4.">CtrlOutEndpointViaSTM32F4</a> and <a class="el" href="classusb_1_1stm32f4_1_1_bulk_out_endpoint_via_s_t_m32_f4.html" title="Bulk OUT Endpoint Driver for STM32F4.">BulkOutEndpointViaSTM32F4</a> concrete Endpoint classes.</p>
+<p>These methods are used by the Endpoint-type specific sub-classes, e.g. to register themselves as a call-out handler or to setup/enable/disable the actual hardware. </p>
+</div></td></tr>
+<tr class="memitem:a22c618b6e9a2b16c7cc60f19a2d6aafa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#a22c618b6e9a2b16c7cc60f19a2d6aafa">registerEndpointCallback</a> (<a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html">OutEndpointViaSTM34F4Callback</a> &amp;p_endpointCallback)</td></tr>
+<tr class="memdesc:a22c618b6e9a2b16c7cc60f19a2d6aafa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a Callback Object.  <a href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#a22c618b6e9a2b16c7cc60f19a2d6aafa">More...</a><br /></td></tr>
 <tr class="separator:a22c618b6e9a2b16c7cc60f19a2d6aafa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f82a4b40b8e0e41166223582d7393f3"><td class="memItemLeft" align="right" valign="top"><a id="a3f82a4b40b8e0e41166223582d7393f3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>unregisterEndpointCallback</b> (void)</td></tr>
+<tr class="memitem:a3f82a4b40b8e0e41166223582d7393f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#a3f82a4b40b8e0e41166223582d7393f3">unregisterEndpointCallback</a> (void)</td></tr>
+<tr class="memdesc:a3f82a4b40b8e0e41166223582d7393f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unregisters a Callback Object.  <a href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#a3f82a4b40b8e0e41166223582d7393f3">More...</a><br /></td></tr>
 <tr class="separator:a3f82a4b40b8e0e41166223582d7393f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac077250da20b1283f9ac26cf8e4135b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#ac077250da20b1283f9ac26cf8e4135b0">setup</a> (const UsbDeviceViaSTM32F4::EndpointType_e p_endpointType) const</td></tr>
-<tr class="memdesc:ac077250da20b1283f9ac26cf8e4135b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set up Endpoint as Bulk OUT Endpoint.  <a href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#ac077250da20b1283f9ac26cf8e4135b0">More...</a><br /></td></tr>
+<tr class="memitem:ac077250da20b1283f9ac26cf8e4135b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#ac077250da20b1283f9ac26cf8e4135b0">setup</a> (const <a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html#a90819c81ee82f974d92f9eac5449d1df">UsbDeviceViaSTM32F4::EndpointType_e</a> p_endpointType) const</td></tr>
+<tr class="memdesc:ac077250da20b1283f9ac26cf8e4135b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set up Endpoint as the given Endpoint type.  <a href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#ac077250da20b1283f9ac26cf8e4135b0">More...</a><br /></td></tr>
 <tr class="separator:ac077250da20b1283f9ac26cf8e4135b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7aab8dae46e6a0744520ac97246106d"><td class="memItemLeft" align="right" valign="top">constexpr unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#ab7aab8dae46e6a0744520ac97246106d">getEndpointNumber</a> (void) const</td></tr>
-<tr class="memdesc:ab7aab8dae46e6a0744520ac97246106d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Endpoint Number.  <a href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#ab7aab8dae46e6a0744520ac97246106d">More...</a><br /></td></tr>
-<tr class="separator:ab7aab8dae46e6a0744520ac97246106d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1bae3bc250426d54648941eb0cf07c9a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#a1bae3bc250426d54648941eb0cf07c9a">handleIrq</a> (void) const</td></tr>
-<tr class="memdesc:a1bae3bc250426d54648941eb0cf07c9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">OUT Endpoint Interrupt Callback.  <a href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#a1bae3bc250426d54648941eb0cf07c9a">More...</a><br /></td></tr>
-<tr class="separator:a1bae3bc250426d54648941eb0cf07c9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a95b8dd71b5fa10efa5e35c6c92acc6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#a9a95b8dd71b5fa10efa5e35c6c92acc6">disable</a> (void) const</td></tr>
 <tr class="memdesc:a9a95b8dd71b5fa10efa5e35c6c92acc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disable the OUT Endpoint.  <a href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#a9a95b8dd71b5fa10efa5e35c6c92acc6">More...</a><br /></td></tr>
 <tr class="separator:a9a95b8dd71b5fa10efa5e35c6c92acc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6949f1dfc2c635986d20874fac3811b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#aa6949f1dfc2c635986d20874fac3811b">enable</a> (void) const</td></tr>
 <tr class="memdesc:aa6949f1dfc2c635986d20874fac3811b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable the OUT Endpoint to receive packets.  <a href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#aa6949f1dfc2c635986d20874fac3811b">More...</a><br /></td></tr>
 <tr class="separator:aa6949f1dfc2c635986d20874fac3811b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Interface to the USB Device Driver.</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>These methods provide an interface to the <a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html" title="Driver for the STM32F4 USB On-the-Go (OTG) Core in USB Device Mode.">UsbDeviceViaSTM32F4</a> Device Driver class. </p>
+</div></td></tr>
+<tr class="memitem:ab7aab8dae46e6a0744520ac97246106d"><td class="memItemLeft" align="right" valign="top">constexpr unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#ab7aab8dae46e6a0744520ac97246106d">getEndpointNumber</a> (void) const</td></tr>
+<tr class="memdesc:ab7aab8dae46e6a0744520ac97246106d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Endpoint Number.  <a href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#ab7aab8dae46e6a0744520ac97246106d">More...</a><br /></td></tr>
+<tr class="separator:ab7aab8dae46e6a0744520ac97246106d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bae3bc250426d54648941eb0cf07c9a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#a1bae3bc250426d54648941eb0cf07c9a">handleIrq</a> (void) const</td></tr>
+<tr class="memdesc:a1bae3bc250426d54648941eb0cf07c9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">OUT Endpoint Interrupt Callback.  <a href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#a1bae3bc250426d54648941eb0cf07c9a">More...</a><br /></td></tr>
+<tr class="separator:a1bae3bc250426d54648941eb0cf07c9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6736fca4b291e11d99e310e37d357107"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#a6736fca4b291e11d99e310e37d357107">setPacketSize</a> (const unsigned p_packetSize) const</td></tr>
 <tr class="memdesc:a6736fca4b291e11d99e310e37d357107"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set up the endpoint's max. Packet Size.  <a href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#a6736fca4b291e11d99e310e37d357107">More...</a><br /></td></tr>
 <tr class="separator:a6736fca4b291e11d99e310e37d357107"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af130494c5214250c8213f9936ecdedd9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#af130494c5214250c8213f9936ecdedd9">dataReceivedDeviceCallback</a> (const size_t p_numBytes, const typename UsbDeviceViaSTM32F4::DataPID_e &amp;p_dataPID) const</td></tr>
+<tr class="memitem:af130494c5214250c8213f9936ecdedd9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#af130494c5214250c8213f9936ecdedd9">dataReceivedDeviceCallback</a> (const size_t p_numBytes, const typename <a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html#aa7331b7011b7f0ee0d4727f807a4d535">UsbDeviceViaSTM32F4::DataPID_e</a> &amp;p_dataPID) const</td></tr>
 <tr class="memdesc:af130494c5214250c8213f9936ecdedd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to read received OUT data from the Hardware's Rx FIFO.  <a href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#af130494c5214250c8213f9936ecdedd9">More...</a><br /></td></tr>
 <tr class="separator:af130494c5214250c8213f9936ecdedd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:addd4409e9bbdbf3b6adbbb42274ef2d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#addd4409e9bbdbf3b6adbbb42274ef2d4">transferCompleteDeviceCallback</a> (void) const</td></tr>
@@ -128,7 +140,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>unregisterEndpointCal
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
 Private Types</h2></td></tr>
-<tr class="memitem:ad752a7d05e19645a260cc106a79ae8f6"><td class="memItemLeft" align="right" valign="top"><a id="ad752a7d05e19645a260cc106a79ae8f6"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>Interrupt_e</b> : uint32_t { <br />
+<tr class="memitem:ad752a7d05e19645a260cc106a79ae8f6"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#ad752a7d05e19645a260cc106a79ae8f6">Interrupt_e</a> : uint32_t { <br />
 &#160;&#160;<b>e_None</b> = 0, 
 <b>e_TransferCompleted</b> = USB_OTG_DOEPINT_XFRC, 
 <b>e_EndpointDisabled</b> = USB_OTG_DOEPINT_EPDISD, 
@@ -144,12 +156,13 @@ Private Types</h2></td></tr>
 <b>e_NotYet</b> = USB_OTG_DOEPINT_NYET
 <br />
  }</td></tr>
+<tr class="memdesc:ad752a7d05e19645a260cc106a79ae8f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Private enum / typedef for OUT Endpoint IRQs.  <a href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#ad752a7d05e19645a260cc106a79ae8f6">More...</a><br /></td></tr>
 <tr class="separator:ad752a7d05e19645a260cc106a79ae8f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1303277b90a450664dc1b3eaf93b720"><td class="memItemLeft" align="right" valign="top">typedef void(usb::stm32f4::OutEndpointViaSTM32F4::*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#ac1303277b90a450664dc1b3eaf93b720">irq_handler_fn</a>) () const</td></tr>
 <tr class="memdesc:ac1303277b90a450664dc1b3eaf93b720"><td class="mdescLeft">&#160;</td><td class="mdescRight">Private Typedef for the Endpoint IRQ Handlers.  <a href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#ac1303277b90a450664dc1b3eaf93b720">More...</a><br /></td></tr>
 <tr class="separator:ac1303277b90a450664dc1b3eaf93b720"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a35d238d0c0b5c96d29f84e0a4683e659"><td class="memItemLeft" align="right" valign="top"><a id="a35d238d0c0b5c96d29f84e0a4683e659"></a>
-typedef enum usb::stm32f4::OutEndpointViaSTM32F4::Interrupt_e&#160;</td><td class="memItemRight" valign="bottom"><b>Interrupt_t</b></td></tr>
+<tr class="memitem:a35d238d0c0b5c96d29f84e0a4683e659"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#ad752a7d05e19645a260cc106a79ae8f6">usb::stm32f4::OutEndpointViaSTM32F4::Interrupt_e</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#a35d238d0c0b5c96d29f84e0a4683e659">Interrupt_t</a></td></tr>
+<tr class="memdesc:a35d238d0c0b5c96d29f84e0a4683e659"><td class="mdescLeft">&#160;</td><td class="mdescRight">Private enum / typedef for OUT Endpoint IRQs.  <a href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#a35d238d0c0b5c96d29f84e0a4683e659">More...</a><br /></td></tr>
 <tr class="separator:a35d238d0c0b5c96d29f84e0a4683e659"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae99d44672925544401b9a71290206465"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4_1_1irq__handler__s.html">usb::stm32f4::OutEndpointViaSTM32F4::irq_handler_s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#ae99d44672925544401b9a71290206465">irq_handler_t</a></td></tr>
 <tr class="memdesc:ae99d44672925544401b9a71290206465"><td class="mdescLeft">&#160;</td><td class="mdescRight">Private Data Type to construct the Table of IRQ Handlers.  <a href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#ae99d44672925544401b9a71290206465">More...</a><br /></td></tr>
@@ -191,7 +204,37 @@ Friends</h2></td></tr>
 class&#160;</td><td class="memItemRight" valign="bottom"><b>CtrlOutEndpointViaSTM32F4</b></td></tr>
 <tr class="separator:a2c5fa3e5749da7eb8d7f5b4c6b332c9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Typedef Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>OUT Endpoint driver for STM32F4. </p>
+<p>This class handles all OUT Endpoint specific aspects of the STM32F4 USB Core.</p>
+<p>It implements the interface to the device-independent USB layer.</p>
+<p>It also exposes an Interface to <a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html" title="Driver for the STM32F4 USB On-the-Go (OTG) Core in USB Device Mode.">usb::stm32f4::UsbDeviceViaSTM32F4</a> to handle callbacks from the USB Device Class. </p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a35d238d0c0b5c96d29f84e0a4683e659"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35d238d0c0b5c96d29f84e0a4683e659">&#9670;&nbsp;</a></span>Interrupt_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef enum <a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#ad752a7d05e19645a260cc106a79ae8f6">usb::stm32f4::OutEndpointViaSTM32F4::Interrupt_e</a> <a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#a35d238d0c0b5c96d29f84e0a4683e659">usb::stm32f4::OutEndpointViaSTM32F4::Interrupt_t</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Private enum / typedef for OUT Endpoint IRQs. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#a89eb4d463b49b707705080e2230681a8" title="OUT Endpoint Interrupt Handlers.">m_irq_handler</a> </dd></dl>
+
+</div>
+</div>
 <a id="ac1303277b90a450664dc1b3eaf93b720"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac1303277b90a450664dc1b3eaf93b720">&#9670;&nbsp;</a></span>irq_handler_fn</h2>
 
@@ -213,7 +256,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>CtrlOutEndpointViaST
 </div><div class="memdoc">
 
 <p>Private Typedef for the Endpoint IRQ Handlers. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#a89eb4d463b49b707705080e2230681a8" title="OUT Endpoint Interrupt Handlers.">usb::stm32f4::OutEndpointViaSTM32F4::m_irq_handler</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#a89eb4d463b49b707705080e2230681a8" title="OUT Endpoint Interrupt Handlers.">m_irq_handler</a> </dd></dl>
 
 </div>
 </div>
@@ -238,7 +281,33 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>CtrlOutEndpointViaST
 </div><div class="memdoc">
 
 <p>Private Data Type to construct the Table of IRQ Handlers. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#a89eb4d463b49b707705080e2230681a8" title="OUT Endpoint Interrupt Handlers.">usb::stm32f4::OutEndpointViaSTM32F4::m_irq_handler</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#a89eb4d463b49b707705080e2230681a8" title="OUT Endpoint Interrupt Handlers.">m_irq_handler</a> </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="ad752a7d05e19645a260cc106a79ae8f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad752a7d05e19645a260cc106a79ae8f6">&#9670;&nbsp;</a></span>Interrupt_e</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#ad752a7d05e19645a260cc106a79ae8f6">usb::stm32f4::OutEndpointViaSTM32F4::Interrupt_e</a> : uint32_t</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Private enum / typedef for OUT Endpoint IRQs. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#a89eb4d463b49b707705080e2230681a8" title="OUT Endpoint Interrupt Handlers.">m_irq_handler</a> </dd></dl>
 
 </div>
 </div>
@@ -270,7 +339,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>CtrlOutEndpointViaST
 </div><div class="memdoc">
 
 <p>Constructor. </p>
-<p>Constructs a new <a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html">usb::stm32f4::OutEndpointViaSTM32F4</a> with the given endpoint number and registers it as a callback receiver with the provided <a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html">usb::stm32f4::UsbDeviceViaSTM32F4</a> object.</p>
+<p>Constructs a new <a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html" title="OUT Endpoint driver for STM32F4.">usb::stm32f4::OutEndpointViaSTM32F4</a> with the given endpoint number and registers it as a callback receiver with the provided <a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html" title="Driver for the STM32F4 USB On-the-Go (OTG) Core in USB Device Mode.">usb::stm32f4::UsbDeviceViaSTM32F4</a> object.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">p_usbDevice</td><td>Object that represents the STM32F4 USB Device Hardware Driver. </td></tr>
@@ -278,7 +347,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>CtrlOutEndpointViaST
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd>::usb::stm32f4::UsbDeviceViaSTM32F4::registerEndpoint </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html#ac78755ac276ed0ff4717a0295687170e" title="Register an OUT Endpoint Handler.">UsbDeviceViaSTM32F4::registerOutEndpoint</a> </dd></dl>
 
 </div>
 </div>
@@ -298,8 +367,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>CtrlOutEndpointViaST
 </div><div class="memdoc">
 
 <p>Destructor. </p>
-<p>Destructs the object and unregisters it at the STM32F4 USB Device Hardware driver referred to by ::m_usbDevice.</p>
-<dl class="section see"><dt>See also</dt><dd>::usb::stm32f4::UsbDeviceViaSTM32F4::unregisterEndpoint </dd></dl>
+<p>Destructs the object and unregisters it at the STM32F4 USB Device Hardware driver referred to by <a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#a08ec5b586e16b0dd600231a9c3a25b9f" title="Reference to the STM32F4 USB Device Driver object.">m_usbDevice</a>.</p>
+<dl class="section see"><dt>See also</dt><dd>UsbDeviceViaSTM32F4::unregisterEndpoint </dd></dl>
 
 </div>
 </div>
@@ -319,7 +388,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>CtrlOutEndpointViaST
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const typename UsbDeviceViaSTM32F4::DataPID_e &amp;&#160;</td>
+          <td class="paramtype">const typename <a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html#aa7331b7011b7f0ee0d4727f807a4d535">UsbDeviceViaSTM32F4::DataPID_e</a> &amp;&#160;</td>
           <td class="paramname"><em>p_dataPID</em>&#160;</td>
         </tr>
         <tr>
@@ -331,8 +400,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>CtrlOutEndpointViaST
 </div><div class="memdoc">
 
 <p>Callback to read received OUT data from the Hardware's Rx FIFO. </p>
-<p>This callback method is called from <a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html#a4d57430599ea4cb48284bd283d20bab5" title="Rx FIFO Non-Empty IRQ Handler.">usb::stm32f4::UsbDeviceViaSTM32F4::handleRxFIFO</a> when there is OUT data in the USB Device hardware's Rx FIFO.</p>
-<p>This method will forward the data to the device-independent layer in ::usb::UsbOutEndpoint (via ::usb::UsbHwOutEndpoint::m_endpointCallback). </p>
+<p>This callback method is called from <a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html#a4d57430599ea4cb48284bd283d20bab5" title="Rx FIFO Non-Empty IRQ Handler.">UsbDeviceViaSTM32F4::handleRxFIFO</a> when there is OUT data in the USB Device hardware's Rx FIFO.</p>
+<p>This method will forward the data to the device-independent layer in <a class="el" href="classusb_1_1_usb_ctrl_out_endpoint.html">UsbCtrlOutEndpoint</a> or <a class="el" href="classusb_1_1_usb_bulk_out_endpoint.html">UsbBulkOutEndpoint</a> (via <a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#a1b1d5208bd61449cd027f3b35df8bfd2" title="Callback to USB-generic OUT Endpoint implementation.">m_endpointCallback</a>). </p>
 
 </div>
 </div>
@@ -378,7 +447,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>CtrlOutEndpointViaST
 <p>This method enables the OUT Endpoint to receive packets from the USB Bus. Internally, this will clear the USB Hardware's <em>NAK</em> Bit for the Endpoint by setting <code>CNAK</code> in the <code>DOEPCTL</code> register.</p>
 <p>Also, ths <code>EPENA</code> Bit will be set which enables receiving Packets into the USB Hardware's Rx FIFO.</p>
 <p>From a USB Bus perspective, the Endpoint will accept packets after this method has been called.</p>
-<p>Please note that <a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#ac077250da20b1283f9ac26cf8e4135b0" title="Set up Endpoint as Bulk OUT Endpoint.">usb::stm32f4::OutEndpointViaSTM32F4::setup</a> must have been called (to setup Endpoint Type, Packet Size, etc.) before the endpoint can be enabled safely. </p>
+<p>Please note that <a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#ac077250da20b1283f9ac26cf8e4135b0" title="Set up Endpoint as the given Endpoint type.">usb::stm32f4::OutEndpointViaSTM32F4::setup</a> must have been called (to setup Endpoint Type, Packet Size, etc.) before the endpoint can be enabled safely. </p>
 
 </div>
 </div>
@@ -407,7 +476,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>CtrlOutEndpointViaST
 </div><div class="memdoc">
 
 <p>Get the Endpoint Number. </p>
-<p>Returns ::m_endpointNumber.</p>
+<p>Returns <a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#a9a268d2973da00c0297ffaca92fad504" title="OUT Endpoint Number.">m_endpointNumber</a>.</p>
 <dl class="section return"><dt>Returns</dt><dd>constexpr unsigned Endpoint Number without USB Direction encoding. </dd></dl>
 
 </div>
@@ -429,7 +498,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>CtrlOutEndpointViaST
 </div><div class="memdoc">
 
 <p>OUT Endpoint Interrupt Callback. </p>
-<p>Interrupt handler for OUT Endpoint Interrupts. Called from <a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html#a39fa6c6c168358ed2943fe28543a68b7" title="OUT Endpoint IRQ Handler.">usb::stm32f4::UsbDeviceViaSTM32F4::handleOutEndpointIrq</a> on the right <a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html">OutEndpointViaSTM32F4</a> object.</p>
+<p>Interrupt handler for OUT Endpoint Interrupts. Called from <a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html#a39fa6c6c168358ed2943fe28543a68b7" title="OUT Endpoint IRQ Handler.">usb::stm32f4::UsbDeviceViaSTM32F4::handleOutEndpointIrq</a> on the right <a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html" title="OUT Endpoint driver for STM32F4.">OutEndpointViaSTM32F4</a> object.</p>
 <p>The OUT Endpoint Interrupts handlers are referred in <a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#a89eb4d463b49b707705080e2230681a8" title="OUT Endpoint Interrupt Handlers.">usb::stm32f4::OutEndpointViaSTM32F4::m_irq_handler</a>. </p>
 
 </div>
@@ -462,6 +531,43 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>CtrlOutEndpointViaST
 <p>This is the interrupt handler for the <code>XFRC</code> bit in the <code>DOEPINT</code> register. It notifies the <a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#a1b1d5208bd61449cd027f3b35df8bfd2" title="Callback to USB-generic OUT Endpoint implementation.">m_endpointCallback</a> object of the completed transfer to trigger further processing of the data received at the Device.</p>
 <p>Also, the USB hardware clears the enable bit after the OUT transfer is complete. This means the endpoint is NAK'ing any incoming OUT packets until we re-enable it. So this method re-enables the endpoint.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#aa6949f1dfc2c635986d20874fac3811b" title="Enable the OUT Endpoint to receive packets.">usb::stm32f4::OutEndpointViaSTM32F4::enable()</a> </dd></dl>
+
+</div>
+</div>
+<a id="a22c618b6e9a2b16c7cc60f19a2d6aafa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22c618b6e9a2b16c7cc60f19a2d6aafa">&#9670;&nbsp;</a></span>registerEndpointCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void usb::stm32f4::OutEndpointViaSTM32F4::registerEndpointCallback </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html">OutEndpointViaSTM34F4Callback</a> &amp;&#160;</td>
+          <td class="paramname"><em>p_endpointCallback</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Register a Callback Object. </p>
+<p>The <a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html" title="Interface between the OUT Endpoint driver and the type-specific classes.">OutEndpointViaSTM34F4Callback</a> is used to bridge to the hardware-indepentent layer.</p>
+<p>The object is notified e.g. in case of a <em>Transfer Complete</em> Interrupt.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#ab214b5bae2c4e62b36b81aa45d3813a8" title="Handle Endpoint Transfer Complete IRQ.">handleTransferCompleteIrq</a></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p_endpointCallback</td><td>Reference to a <a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html" title="Interface between the OUT Endpoint driver and the type-specific classes.">OutEndpointViaSTM34F4Callback</a> object. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -502,19 +608,19 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>CtrlOutEndpointViaST
         <tr>
           <td class="memname">void usb::stm32f4::OutEndpointViaSTM32F4::setup </td>
           <td>(</td>
-          <td class="paramtype">const UsbDeviceViaSTM32F4::EndpointType_e&#160;</td>
+          <td class="paramtype">const <a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html#a90819c81ee82f974d92f9eac5449d1df">UsbDeviceViaSTM32F4::EndpointType_e</a>&#160;</td>
           <td class="paramname"><em>p_endpointType</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Set up Endpoint as Bulk OUT Endpoint. </p>
+<p>Set up Endpoint as the given Endpoint type. </p>
 <p>This method will modify the <code>DOEPCTL</code> register to set up the endpoint as a Bulk OUT endpoint.</p>
 <p>The max. Packet Size depends on the enumerated speed and the max. data buffer that the device-independent layer can handle.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html#a120144591c488e8016d5a953b1bc11b4" title="Read enumerated speed from USB Hardware.">usb::stm32f4::UsbDeviceViaSTM32F4::getEnumeratedSpeed</a> on querying the enumerated USB speed. </dd>
 <dd>
-::usb::UsbOutEndpoint::getDataBuffer on obtaining the upper layer's max. buffer size. </dd></dl>
+<a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#a9caf491009dd3f0c2f0084117b4bca06" title="Get Information on the Endpoint&#39;s Data Buffer.">OutEndpointViaSTM34F4Callback::getDataBuffer</a> on obtaining the endpoints max. buffer size. </dd></dl>
 
 </div>
 </div>
@@ -538,6 +644,35 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>CtrlOutEndpointViaST
 <p>This is a callback used from <a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html#a4d57430599ea4cb48284bd283d20bab5" title="Rx FIFO Non-Empty IRQ Handler.">usb::stm32f4::UsbDeviceViaSTM32F4::handleRxFIFO</a> where the <code>PKTSTS</code> Bit of the <code>GRXSTSP</code> Register is handled. This is a result of handling the <code>RXFLVL</code> Interrupt (part of <code>GINTSTS</code> register).</p>
 <p>I think this bit is set when all of the OUT Transfer's Rx Data has been read from the FIFO into application memory.</p>
 <p>The OUT endpoint's actual Transfer Complete Interrupt is handled in <a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#ab214b5bae2c4e62b36b81aa45d3813a8" title="Handle Endpoint Transfer Complete IRQ.">usb::stm32f4::OutEndpointViaSTM32F4::handleTransferCompleteIrq</a>. </p>
+
+</div>
+</div>
+<a id="a3f82a4b40b8e0e41166223582d7393f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f82a4b40b8e0e41166223582d7393f3">&#9670;&nbsp;</a></span>unregisterEndpointCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void usb::stm32f4::OutEndpointViaSTM32F4::unregisterEndpointCallback </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Unregisters a Callback Object. </p>
+<p>Unregisters a <a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html" title="Interface between the OUT Endpoint driver and the type-specific classes.">OutEndpointViaSTM34F4Callback</a> object by setting <a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#a1b1d5208bd61449cd027f3b35df8bfd2" title="Callback to USB-generic OUT Endpoint implementation.">m_endpointCallback</a> to <code>nullptr</code> . </p>
 
 </div>
 </div>
@@ -700,7 +835,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>CtrlOutEndpointViaST
 <li>common/stm32f4/usb/OutEndpointViaSTM32F4.cpp</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclassusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4_html_ab214b5bae2c4e62b36b81aa45d3813a8"><div class="ttname"><a href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#ab214b5bae2c4e62b36b81aa45d3813a8">usb::stm32f4::OutEndpointViaSTM32F4::handleTransferCompleteIrq</a></div><div class="ttdeci">void handleTransferCompleteIrq(void) const</div><div class="ttdoc">Handle Endpoint Transfer Complete IRQ.</div><div class="ttdef"><b>Definition:</b> OutEndpointViaSTM32F4.cpp:355</div></div>
+<div class="ttc" id="aclassusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4_html_ab214b5bae2c4e62b36b81aa45d3813a8"><div class="ttname"><a href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#ab214b5bae2c4e62b36b81aa45d3813a8">usb::stm32f4::OutEndpointViaSTM32F4::handleTransferCompleteIrq</a></div><div class="ttdeci">void handleTransferCompleteIrq(void) const</div><div class="ttdoc">Handle Endpoint Transfer Complete IRQ.</div><div class="ttdef"><b>Definition:</b> OutEndpointViaSTM32F4.cpp:354</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

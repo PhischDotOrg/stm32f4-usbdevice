@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PhiSch.org - STM32F4 Library
-   &#160;<span id="projectnumber">1fe2ae1+</span>
+   &#160;<span id="projectnumber">4f22309+</span>
    </div>
    <div id="projectbrief">PhiSch.org - STM32F4 Lib</div>
   </td>
@@ -88,6 +88,7 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structusb_1_1stm32f4_1_1_in_endpoint_via_s_t_m32_f4_1_1irq__handler__s.html">irq_handler_s</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typedef for IRQ Handler.  <a href="structusb_1_1stm32f4_1_1_in_endpoint_via_s_t_m32_f4_1_1irq__handler__s.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structusb_1_1stm32f4_1_1_in_endpoint_via_s_t_m32_f4_1_1_tx_buffer__s.html">TxBuffer_s</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -118,7 +119,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setPacketSize</b> (co
 <tr class="memitem:a37089e609d07cad6f17b429fa37c231f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_in_endpoint_via_s_t_m32_f4.html#a37089e609d07cad6f17b429fa37c231f">writeString</a> (const ::<a class="el" href="structusb_1_1_usb_string_descriptor_t.html">usb::UsbStringDescriptor</a> &amp;p_string, const size_t p_len)</td></tr>
 <tr class="memdesc:a37089e609d07cad6f17b429fa37c231f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write USB String Data to IN Endpoint and trigger tansmission to Host.  <a href="classusb_1_1stm32f4_1_1_in_endpoint_via_s_t_m32_f4.html#a37089e609d07cad6f17b429fa37c231f">More...</a><br /></td></tr>
 <tr class="separator:a37089e609d07cad6f17b429fa37c231f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac578a44305c33c1e312fd17011b2bbd1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_in_endpoint_via_s_t_m32_f4.html#ac578a44305c33c1e312fd17011b2bbd1">enable</a> (const UsbDeviceViaSTM32F4::EndpointType_e &amp;p_endpointType) const</td></tr>
+<tr class="memitem:ac578a44305c33c1e312fd17011b2bbd1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_in_endpoint_via_s_t_m32_f4.html#ac578a44305c33c1e312fd17011b2bbd1">enable</a> (const <a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html#a90819c81ee82f974d92f9eac5449d1df">UsbDeviceViaSTM32F4::EndpointType_e</a> &amp;p_endpointType) const</td></tr>
 <tr class="memdesc:ac578a44305c33c1e312fd17011b2bbd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable the IN Endpoint in the STM32F4 Device.  <a href="classusb_1_1stm32f4_1_1_in_endpoint_via_s_t_m32_f4.html#ac578a44305c33c1e312fd17011b2bbd1">More...</a><br /></td></tr>
 <tr class="separator:ac578a44305c33c1e312fd17011b2bbd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0adc6c8583cb292f1fb602f45383891b"><td class="memItemLeft" align="right" valign="top"><a id="a0adc6c8583cb292f1fb602f45383891b"></a>
@@ -127,11 +128,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>disable</b> (void) co
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
 Private Types</h2></td></tr>
-<tr class="memitem:a730260cc33b571f91b952d43d2aaf07a"><td class="memItemLeft" align="right" valign="top"><a id="a730260cc33b571f91b952d43d2aaf07a"></a>
-typedef void(usb::stm32f4::InEndpointViaSTM32F4::*&#160;</td><td class="memItemRight" valign="bottom"><b>irq_handler_fn</b>) ()</td></tr>
+<tr class="memitem:a730260cc33b571f91b952d43d2aaf07a"><td class="memItemLeft" align="right" valign="top">typedef void(usb::stm32f4::InEndpointViaSTM32F4::*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_in_endpoint_via_s_t_m32_f4.html#a730260cc33b571f91b952d43d2aaf07a">irq_handler_fn</a>) ()</td></tr>
+<tr class="memdesc:a730260cc33b571f91b952d43d2aaf07a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Private Typedef for the Endpoint IRQ Handlers.  <a href="classusb_1_1stm32f4_1_1_in_endpoint_via_s_t_m32_f4.html#a730260cc33b571f91b952d43d2aaf07a">More...</a><br /></td></tr>
 <tr class="separator:a730260cc33b571f91b952d43d2aaf07a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16f30e8bb17f493bf36db2047d50b4bf"><td class="memItemLeft" align="right" valign="top"><a id="a16f30e8bb17f493bf36db2047d50b4bf"></a>
-typedef struct <a class="el" href="structusb_1_1stm32f4_1_1_in_endpoint_via_s_t_m32_f4_1_1irq__handler__s.html">usb::stm32f4::InEndpointViaSTM32F4::irq_handler_s</a>&#160;</td><td class="memItemRight" valign="bottom"><b>irq_handler_t</b></td></tr>
+typedef struct <a class="el" href="structusb_1_1stm32f4_1_1_in_endpoint_via_s_t_m32_f4_1_1irq__handler__s.html">usb::stm32f4::InEndpointViaSTM32F4::irq_handler_s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_in_endpoint_via_s_t_m32_f4.html#a16f30e8bb17f493bf36db2047d50b4bf">irq_handler_t</a></td></tr>
+<tr class="memdesc:a16f30e8bb17f493bf36db2047d50b4bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typedef for IRQ Handler. <br /></td></tr>
 <tr class="separator:a16f30e8bb17f493bf36db2047d50b4bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b2bedf81668ced90249d333215a9966"><td class="memItemLeft" align="right" valign="top"><a id="a6b2bedf81668ced90249d333215a9966"></a>
 typedef struct <a class="el" href="structusb_1_1stm32f4_1_1_in_endpoint_via_s_t_m32_f4_1_1_tx_buffer__s.html">usb::stm32f4::InEndpointViaSTM32F4::TxBuffer_s</a>&#160;</td><td class="memItemRight" valign="bottom"><b>TxBuffer_t</b></td></tr>
@@ -185,7 +187,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>disableIrq</b> (void)
 void&#160;</td><td class="memItemRight" valign="bottom"><b>markTxBufferComplete</b> (void)</td></tr>
 <tr class="separator:a6e1737909a818a484c6070564b24d24a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2ccbae238cbc11fcb22e32f549ce3ff"><td class="memItemLeft" align="right" valign="top"><a id="aa2ccbae238cbc11fcb22e32f549ce3ff"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setupEndpointType</b> (const UsbDeviceViaSTM32F4::EndpointType_e &amp;p_endpointType) const</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setupEndpointType</b> (const <a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html#a90819c81ee82f974d92f9eac5449d1df">UsbDeviceViaSTM32F4::EndpointType_e</a> &amp;p_endpointType) const</td></tr>
 <tr class="separator:aa2ccbae238cbc11fcb22e32f549ce3ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45ab3793ef61517e06f74cd7a393655f"><td class="memItemLeft" align="right" valign="top"><a id="a45ab3793ef61517e06f74cd7a393655f"></a>
 unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>getPacketSize</b> (void) const</td></tr>
@@ -207,10 +209,11 @@ const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <tr class="memdesc:abbee5d5496f9b79d2a4e7ea2484eb723"><td class="mdescLeft">&#160;</td><td class="mdescRight">Endpoint FIFO Size in Words, i.e. units of 4 Bytes. <br /></td></tr>
 <tr class="separator:abbee5d5496f9b79d2a4e7ea2484eb723"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5cdd8eb53eb50c43e2f64be21268ce3"><td class="memItemLeft" align="right" valign="top"><a id="aa5cdd8eb53eb50c43e2f64be21268ce3"></a>
-USB_OTG_INEndpointTypeDef *const&#160;</td><td class="memItemRight" valign="bottom"><b>m_endpoint</b></td></tr>
+USB_OTG_INEndpointTypeDef *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_in_endpoint_via_s_t_m32_f4.html#aa5cdd8eb53eb50c43e2f64be21268ce3">m_endpoint</a></td></tr>
+<tr class="memdesc:aa5cdd8eb53eb50c43e2f64be21268ce3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the ST-provided structure to access the Hardware registers. <br /></td></tr>
 <tr class="separator:aa5cdd8eb53eb50c43e2f64be21268ce3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab2733b82daa8d68ddea8861d8185a1a5"><td class="memItemLeft" align="right" valign="top"><a id="ab2733b82daa8d68ddea8861d8185a1a5"></a>
-volatile uint32_t *const&#160;</td><td class="memItemRight" valign="bottom"><b>m_fifoAddr</b></td></tr>
+<tr class="memitem:ab2733b82daa8d68ddea8861d8185a1a5"><td class="memItemLeft" align="right" valign="top">volatile uint32_t *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_in_endpoint_via_s_t_m32_f4.html#ab2733b82daa8d68ddea8861d8185a1a5">m_fifoAddr</a></td></tr>
+<tr class="memdesc:ab2733b82daa8d68ddea8861d8185a1a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the IN endpoint's Tx FIFO.  <a href="classusb_1_1stm32f4_1_1_in_endpoint_via_s_t_m32_f4.html#ab2733b82daa8d68ddea8861d8185a1a5">More...</a><br /></td></tr>
 <tr class="separator:ab2733b82daa8d68ddea8861d8185a1a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f64eec5b26b7813b33e302ee2a8da30"><td class="memItemLeft" align="right" valign="top"><a id="a2f64eec5b26b7813b33e302ee2a8da30"></a>
 <a class="el" href="structusb_1_1stm32f4_1_1_in_endpoint_via_s_t_m32_f4_1_1_tx_buffer__s.html">TxBuffer_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>m_txBuffer</b></td></tr>
@@ -218,16 +221,42 @@ volatile uint32_t *const&#160;</td><td class="memItemRight" valign="bottom"><b>m
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
-<tr class="memitem:a19e97672e63568e2f3d87b4dc0e94fca"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="structusb_1_1stm32f4_1_1_in_endpoint_via_s_t_m32_f4_1_1irq__handler__s.html">irq_handler_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_in_endpoint_via_s_t_m32_f4.html#a19e97672e63568e2f3d87b4dc0e94fca">m_irq_handler</a> []</td></tr>
+<tr class="memitem:a19e97672e63568e2f3d87b4dc0e94fca"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="classusb_1_1stm32f4_1_1_in_endpoint_via_s_t_m32_f4.html#a16f30e8bb17f493bf36db2047d50b4bf">irq_handler_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_in_endpoint_via_s_t_m32_f4.html#a19e97672e63568e2f3d87b4dc0e94fca">m_irq_handler</a> []</td></tr>
 <tr class="memdesc:a19e97672e63568e2f3d87b4dc0e94fca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Table of IN Endpoint Interrupt Handlers.  <a href="classusb_1_1stm32f4_1_1_in_endpoint_via_s_t_m32_f4.html#a19e97672e63568e2f3d87b4dc0e94fca">More...</a><br /></td></tr>
 <tr class="separator:a19e97672e63568e2f3d87b4dc0e94fca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>IN Endpoint driver for STM32F4. </p>
 <p>This class handles all IN Endpoint specific aspects of the STM32F4 USB Core.</p>
-<p>It implements the ::usb::UsbHwInEndpoint interface to the device-independent USB layer.</p>
-<p>It also exposes an Interface to <a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html">usb::stm32f4::UsbDeviceViaSTM32F4</a> to handle callbacks from the USB Device Class. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<p>It implements the interface to the device-independent USB layer.</p>
+<p>It also exposes an Interface to <a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html" title="Driver for the STM32F4 USB On-the-Go (OTG) Core in USB Device Mode.">usb::stm32f4::UsbDeviceViaSTM32F4</a> to handle callbacks from the USB Device Class. </p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a730260cc33b571f91b952d43d2aaf07a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a730260cc33b571f91b952d43d2aaf07a">&#9670;&nbsp;</a></span>irq_handler_fn</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(usb::stm32f4::InEndpointViaSTM32F4::* usb::stm32f4::InEndpointViaSTM32F4::irq_handler_fn) ()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Private Typedef for the Endpoint IRQ Handlers. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classusb_1_1stm32f4_1_1_in_endpoint_via_s_t_m32_f4.html#a19e97672e63568e2f3d87b4dc0e94fca" title="Table of IN Endpoint Interrupt Handlers.">m_irq_handler</a> </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="ac578a44305c33c1e312fd17011b2bbd1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac578a44305c33c1e312fd17011b2bbd1">&#9670;&nbsp;</a></span>enable()</h2>
 
@@ -237,7 +266,7 @@ Static Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void usb::stm32f4::InEndpointViaSTM32F4::enable </td>
           <td>(</td>
-          <td class="paramtype">const UsbDeviceViaSTM32F4::EndpointType_e &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html#a90819c81ee82f974d92f9eac5449d1df">UsbDeviceViaSTM32F4::EndpointType_e</a> &amp;&#160;</td>
           <td class="paramname"><em>p_endpointType</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -397,7 +426,7 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>IN Endpoint specific IRQ Handler. </p>
-<p>IRQ Handler called from <a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html">usb::stm32f4::UsbDeviceViaSTM32F4</a>. </p>
+<p>IRQ Handler called from <a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html" title="Driver for the STM32F4 USB On-the-Go (OTG) Core in USB Device Mode.">usb::stm32f4::UsbDeviceViaSTM32F4</a>. </p>
 
 </div>
 </div>
@@ -604,7 +633,32 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>IN Endpoint Number (without Direction Bit). </p>
-<p>IN Endpoint Number, encoded without the Direction Bit. Can be set to a range between 0 and ::usb::stm32f4::UsbDeviceViaSTM32F4::m_maxInEndpoints as it's used to refer to the IN Endpoint Number within the STM32F4 USB Device Hardware. </p>
+<p>IN Endpoint Number, encoded without the Direction Bit. Can be set to a range between 0 and <a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html#a83b02c4cb8f954bca6ca617fc0e6665e" title="Max. number of IN endpoints supported by this Hardware.">usb::stm32f4::UsbDeviceViaSTM32F4::m_maxInEndpoints</a> as it's used to refer to the IN Endpoint Number within the STM32F4 USB Device Hardware. </p>
+
+</div>
+</div>
+<a id="ab2733b82daa8d68ddea8861d8185a1a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2733b82daa8d68ddea8861d8185a1a5">&#9670;&nbsp;</a></span>m_fifoAddr</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint32_t* const usb::stm32f4::InEndpointViaSTM32F4::m_fifoAddr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pointer to the IN endpoint's Tx FIFO. </p>
+<p>This is used by <a class="el" href="classusb_1_1stm32f4_1_1_in_endpoint_via_s_t_m32_f4.html#a8637e2d3f962351e12b3d4e63e072021" title="Copy String Descriptor to Tx FIFO.">txString</a> and <a class="el" href="classusb_1_1stm32f4_1_1_in_endpoint_via_s_t_m32_f4.html#a5e06c0c59ec4caffd13061e88be82c7d" title="Copy Raw Data Buffer to Tx FIFO.">txData</a> to write Data into the Hardware Tx FIFO. </p>
 
 </div>
 </div>
@@ -618,7 +672,7 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="structusb_1_1stm32f4_1_1_in_endpoint_via_s_t_m32_f4_1_1irq__handler__s.html">InEndpointViaSTM32F4::irq_handler_t</a> usb::stm32f4::InEndpointViaSTM32F4::m_irq_handler</td>
+          <td class="memname">const <a class="el" href="classusb_1_1stm32f4_1_1_in_endpoint_via_s_t_m32_f4.html#a16f30e8bb17f493bf36db2047d50b4bf">InEndpointViaSTM32F4::irq_handler_t</a> usb::stm32f4::InEndpointViaSTM32F4::m_irq_handler</td>
         </tr>
       </table>
   </td>
@@ -663,7 +717,7 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reference to the STM32F4 USB Device Driver Object. </p>
-<p>Reference to an object of class <a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html">usb::stm32f4::UsbDeviceViaSTM32F4</a> which encapsulates all STM32F4-specific operations for USB Device mode. </p>
+<p>Reference to an object of class <a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html" title="Driver for the STM32F4 USB On-the-Go (OTG) Core in USB Device Mode.">usb::stm32f4::UsbDeviceViaSTM32F4</a> which encapsulates all STM32F4-specific operations for USB Device mode. </p>
 
 </div>
 </div>

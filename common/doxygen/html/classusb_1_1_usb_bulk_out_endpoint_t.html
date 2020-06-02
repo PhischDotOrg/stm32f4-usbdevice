@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PhiSch.org - STM32F4 Library
-   &#160;<span id="projectnumber">1fe2ae1+</span>
+   &#160;<span id="projectnumber">4f22309+</span>
    </div>
    <div id="projectbrief">PhiSch.org - STM32F4 Lib</div>
   </td>
@@ -90,8 +90,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6be587adbe1785840a2a195a03256412"><td class="memItemLeft" align="right" valign="top"><a id="a6be587adbe1785840a2a195a03256412"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>UsbBulkOutEndpointT</b> (<a class="el" href="classusb_1_1_usb_bulk_out_application.html">UsbBulkOutApplication</a> &amp;p_usbApplication)</td></tr>
 <tr class="separator:a6be587adbe1785840a2a195a03256412"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a487d558047068f93bdff0006ff82984f"><td class="memItemLeft" align="right" valign="top"><a id="a487d558047068f93bdff0006ff82984f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>registerHwEndpoint</b> (UsbHwBulkOutEndpointT &amp;p_hwEndpoint)</td></tr>
+<tr class="memitem:a487d558047068f93bdff0006ff82984f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1_usb_bulk_out_endpoint_t.html#a487d558047068f93bdff0006ff82984f">registerHwEndpoint</a> (UsbHwBulkOutEndpointT &amp;p_hwEndpoint)</td></tr>
+<tr class="memdesc:a487d558047068f93bdff0006ff82984f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register the Hardware-specific Endpoint Handler.  <a href="classusb_1_1_usb_bulk_out_endpoint_t.html#a487d558047068f93bdff0006ff82984f">More...</a><br /></td></tr>
 <tr class="separator:a487d558047068f93bdff0006ff82984f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93d9b7f6c72a6cce21359f3f9e26d9eb"><td class="memItemLeft" align="right" valign="top"><a id="a93d9b7f6c72a6cce21359f3f9e26d9eb"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>unregisterHwEndpoint</b> ()</td></tr>
@@ -115,6 +115,43 @@ Private Attributes</h2></td></tr>
 UsbHwBulkOutEndpointT *&#160;</td><td class="memItemRight" valign="bottom"><b>m_hwEndpoint</b></td></tr>
 <tr class="separator:ac7b8271ae1912ad27f365b93bc8dd836"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a487d558047068f93bdff0006ff82984f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a487d558047068f93bdff0006ff82984f">&#9670;&nbsp;</a></span>registerHwEndpoint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename UsbHwBulkOutEndpointT &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classusb_1_1_usb_bulk_out_endpoint_t.html">usb::UsbBulkOutEndpointT</a>&lt; UsbHwBulkOutEndpointT &gt;::registerHwEndpoint </td>
+          <td>(</td>
+          <td class="paramtype">UsbHwBulkOutEndpointT &amp;&#160;</td>
+          <td class="paramname"><em>p_hwEndpoint</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Register the Hardware-specific Endpoint Handler. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p_hwEndpoint</td><td>Reference to the Hardware-specific OUT Endpoint Handler. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>common/lib/usb/include/usb/<a class="el" href="_usb_out_endpoint_8hpp_source.html">UsbOutEndpoint.hpp</a></li>
 </ul>

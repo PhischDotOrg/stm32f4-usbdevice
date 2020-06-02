@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PhiSch.org - STM32F4 Library
-   &#160;<span id="projectnumber">1fe2ae1+</span>
+   &#160;<span id="projectnumber">4f22309+</span>
    </div>
    <div id="projectbrief">PhiSch.org - STM32F4 Lib</div>
   </td>
@@ -70,68 +70,444 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-types">Public Types</a> &#124;
-<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">usb::stm32f4::OutEndpointViaSTM34F4Callback Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Interface between the OUT Endpoint driver and the type-specific classes.  
+ <a href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_out_endpoint_via_s_t_m32_f4_8hpp_source.html">common/stm32f4/usb/include/usb/OutEndpointViaSTM32F4.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for usb::stm32f4::OutEndpointViaSTM34F4Callback:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.png" usemap="#usb::stm32f4::OutEndpointViaSTM34F4Callback_map" alt=""/>
   <map id="usb::stm32f4::OutEndpointViaSTM34F4Callback_map" name="usb::stm32f4::OutEndpointViaSTM34F4Callback_map">
-<area href="classusb_1_1stm32f4_1_1_bulk_out_endpoint_via_s_t_m32_f4.html" alt="usb::stm32f4::BulkOutEndpointViaSTM32F4" shape="rect" coords="0,56,279,80"/>
-<area href="classusb_1_1stm32f4_1_1_ctrl_out_endpoint_via_s_t_m32_f4.html" alt="usb::stm32f4::CtrlOutEndpointViaSTM32F4" shape="rect" coords="289,56,568,80"/>
+<area href="classusb_1_1stm32f4_1_1_bulk_out_endpoint_via_s_t_m32_f4.html" title="Bulk OUT Endpoint Driver for STM32F4." alt="usb::stm32f4::BulkOutEndpointViaSTM32F4" shape="rect" coords="0,56,279,80"/>
+<area href="classusb_1_1stm32f4_1_1_ctrl_out_endpoint_via_s_t_m32_f4.html" title="Control OUT Endpoint Driver for STM32F4." alt="usb::stm32f4::CtrlOutEndpointViaSTM32F4" shape="rect" coords="289,56,568,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback_1_1_data_buffer__s.html">DataBuffer_s</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure to describe an OUT Endpoint Data Buffer.  <a href="structusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback_1_1_data_buffer__s.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a6f3bc7b6916979adfcd719947499ca01"><td class="memItemLeft" align="right" valign="top"><a id="a6f3bc7b6916979adfcd719947499ca01"></a>
-typedef struct <a class="el" href="structusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback_1_1_data_buffer__s.html">usb::stm32f4::OutEndpointViaSTM34F4Callback::DataBuffer_s</a>&#160;</td><td class="memItemRight" valign="bottom"><b>DataBuffer_t</b></td></tr>
+<tr class="memitem:a6f3bc7b6916979adfcd719947499ca01"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback_1_1_data_buffer__s.html">usb::stm32f4::OutEndpointViaSTM34F4Callback::DataBuffer_s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#a6f3bc7b6916979adfcd719947499ca01">DataBuffer_t</a></td></tr>
+<tr class="memdesc:a6f3bc7b6916979adfcd719947499ca01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure to describe an OUT Endpoint Data Buffer.  <a href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#a6f3bc7b6916979adfcd719947499ca01">More...</a><br /></td></tr>
 <tr class="separator:a6f3bc7b6916979adfcd719947499ca01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a53feba8e246392fde4e27c814ab2b803"><td class="memItemLeft" align="right" valign="top"><a id="a53feba8e246392fde4e27c814ab2b803"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>OutEndpointViaSTM34F4Callback</b> (<a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html">UsbDeviceViaSTM32F4</a> &amp;p_usbDevice, const unsigned p_endpointNumber)</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Constructor/Destructor.</div></td></tr>
+<tr class="memitem:a53feba8e246392fde4e27c814ab2b803"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#a53feba8e246392fde4e27c814ab2b803">OutEndpointViaSTM34F4Callback</a> (<a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html">UsbDeviceViaSTM32F4</a> &amp;p_usbDevice, const unsigned p_endpointNumber)</td></tr>
+<tr class="memdesc:a53feba8e246392fde4e27c814ab2b803"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#a53feba8e246392fde4e27c814ab2b803">More...</a><br /></td></tr>
 <tr class="separator:a53feba8e246392fde4e27c814ab2b803"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af150ca6700f0b7a572658ed64fb67a57"><td class="memItemLeft" align="right" valign="top"><a id="af150ca6700f0b7a572658ed64fb67a57"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>packetReceived</b> (const size_t p_numBytes)</td></tr>
+<tr class="memitem:a0183e81a1459a0f4f2263f67ec7c35e5"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#a0183e81a1459a0f4f2263f67ec7c35e5">~OutEndpointViaSTM34F4Callback</a> ()</td></tr>
+<tr class="memdesc:a0183e81a1459a0f4f2263f67ec7c35e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#a0183e81a1459a0f4f2263f67ec7c35e5">More...</a><br /></td></tr>
+<tr class="separator:a0183e81a1459a0f4f2263f67ec7c35e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Interface to the OUT Endpoint Handler.</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>These methods are an interface to the generic OUT Endpoint Handler class <a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html" title="OUT Endpoint driver for STM32F4.">OutEndpointViaSTM32F4</a>. </p>
+</div></td></tr>
+<tr class="memitem:af150ca6700f0b7a572658ed64fb67a57"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#af150ca6700f0b7a572658ed64fb67a57">packetReceived</a> (const size_t p_numBytes)</td></tr>
+<tr class="memdesc:af150ca6700f0b7a572658ed64fb67a57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle the OUT Endpoint <em>Packet Received</em> Event.  <a href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#af150ca6700f0b7a572658ed64fb67a57">More...</a><br /></td></tr>
 <tr class="separator:af150ca6700f0b7a572658ed64fb67a57"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a99c4f7697fd1b0fd8707226ed33f8a6b"><td class="memItemLeft" align="right" valign="top"><a id="a99c4f7697fd1b0fd8707226ed33f8a6b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>transferComplete</b> (void)</td></tr>
+<tr class="memitem:a99c4f7697fd1b0fd8707226ed33f8a6b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#a99c4f7697fd1b0fd8707226ed33f8a6b">transferComplete</a> (void)</td></tr>
+<tr class="memdesc:a99c4f7697fd1b0fd8707226ed33f8a6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle the OUT Endpoint <em>Transfer Complete</em> IRQ.  <a href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#a99c4f7697fd1b0fd8707226ed33f8a6b">More...</a><br /></td></tr>
 <tr class="separator:a99c4f7697fd1b0fd8707226ed33f8a6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9caf491009dd3f0c2f0084117b4bca06"><td class="memItemLeft" align="right" valign="top"><a id="a9caf491009dd3f0c2f0084117b4bca06"></a>
-const <a class="el" href="structusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback_1_1_data_buffer__s.html">DataBuffer_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getDataBuffer</b> (void) const</td></tr>
+<tr class="memitem:a9caf491009dd3f0c2f0084117b4bca06"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#a6f3bc7b6916979adfcd719947499ca01">DataBuffer_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#a9caf491009dd3f0c2f0084117b4bca06">getDataBuffer</a> (void) const</td></tr>
+<tr class="memdesc:a9caf491009dd3f0c2f0084117b4bca06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get Information on the Endpoint's Data Buffer.  <a href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#a9caf491009dd3f0c2f0084117b4bca06">More...</a><br /></td></tr>
 <tr class="separator:a9caf491009dd3f0c2f0084117b4bca06"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aada712b581a3031c27983864be4eca18"><td class="memItemLeft" align="right" valign="top"><a id="aada712b581a3031c27983864be4eca18"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setDataBuffer</b> (uint32_t *const p_buffer, size_t p_length)</td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:aada712b581a3031c27983864be4eca18"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#aada712b581a3031c27983864be4eca18">setDataBuffer</a> (uint32_t *const p_buffer, size_t p_length)</td></tr>
+<tr class="memdesc:aada712b581a3031c27983864be4eca18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Data Buffer object.  <a href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#aada712b581a3031c27983864be4eca18">More...</a><br /></td></tr>
 <tr class="separator:aada712b581a3031c27983864be4eca18"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae21f69208352644fcbdb1c02545efb2c"><td class="memItemLeft" align="right" valign="top"><a id="ae21f69208352644fcbdb1c02545efb2c"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>transferComplete</b> (const size_t p_numBytes) const =0</td></tr>
-<tr class="separator:ae21f69208352644fcbdb1c02545efb2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a109310ec12848b70ede7d31518a092b6"><td class="memItemLeft" align="right" valign="top"><a id="a109310ec12848b70ede7d31518a092b6"></a>
-<a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html">OutEndpointViaSTM32F4</a>&#160;</td><td class="memItemRight" valign="bottom"><b>m_outEndpoint</b></td></tr>
+<tr class="memitem:a109310ec12848b70ede7d31518a092b6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html">OutEndpointViaSTM32F4</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#a109310ec12848b70ede7d31518a092b6">m_outEndpoint</a></td></tr>
+<tr class="memdesc:a109310ec12848b70ede7d31518a092b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generic OUT Endpoint Driver.  <a href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#a109310ec12848b70ede7d31518a092b6">More...</a><br /></td></tr>
 <tr class="separator:a109310ec12848b70ede7d31518a092b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3178b6e56b3c410ef36c1dd6f041edd"><td class="memItemLeft" align="right" valign="top"><a id="ab3178b6e56b3c410ef36c1dd6f041edd"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_transmitLength</b></td></tr>
+<tr class="memitem:ab3178b6e56b3c410ef36c1dd6f041edd"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#ab3178b6e56b3c410ef36c1dd6f041edd">m_transmitLength</a></td></tr>
+<tr class="memdesc:ab3178b6e56b3c410ef36c1dd6f041edd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Counter for transmitted OUT Bytes.  <a href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#ab3178b6e56b3c410ef36c1dd6f041edd">More...</a><br /></td></tr>
 <tr class="separator:ab3178b6e56b3c410ef36c1dd6f041edd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9377b4bd34a447d312163f9d5fddc47b"><td class="memItemLeft" align="right" valign="top"><a id="a9377b4bd34a447d312163f9d5fddc47b"></a>
-<a class="el" href="structusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback_1_1_data_buffer__s.html">DataBuffer_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>m_dataBuffer</b></td></tr>
+<tr class="memitem:a9377b4bd34a447d312163f9d5fddc47b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#a6f3bc7b6916979adfcd719947499ca01">DataBuffer_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#a9377b4bd34a447d312163f9d5fddc47b">m_dataBuffer</a></td></tr>
+<tr class="memdesc:a9377b4bd34a447d312163f9d5fddc47b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data Buffer for received OUT Data.  <a href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#a9377b4bd34a447d312163f9d5fddc47b">More...</a><br /></td></tr>
 <tr class="separator:a9377b4bd34a447d312163f9d5fddc47b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Interface to sub-classes.</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Interface used to call into concrete sub-classes. </p>
+</div></td></tr>
+<tr class="memitem:ae21f69208352644fcbdb1c02545efb2c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#ae21f69208352644fcbdb1c02545efb2c">transferComplete</a> (const size_t p_numBytes) const =0</td></tr>
+<tr class="memdesc:ae21f69208352644fcbdb1c02545efb2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sub-class specific Transfer Complete handler.  <a href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#ae21f69208352644fcbdb1c02545efb2c">More...</a><br /></td></tr>
+<tr class="separator:ae21f69208352644fcbdb1c02545efb2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Interface between the OUT Endpoint driver and the type-specific classes. </p>
+<p>This is an interface to bridge between the generic <a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html" title="OUT Endpoint driver for STM32F4.">OutEndpointViaSTM32F4</a> OUT endpoint driver and the Endpoint-type specific classes:</p><ul>
+<li><a class="el" href="classusb_1_1stm32f4_1_1_ctrl_out_endpoint_via_s_t_m32_f4.html" title="Control OUT Endpoint Driver for STM32F4.">CtrlOutEndpointViaSTM32F4</a></li>
+<li><a class="el" href="classusb_1_1stm32f4_1_1_bulk_out_endpoint_via_s_t_m32_f4.html" title="Bulk OUT Endpoint Driver for STM32F4.">BulkOutEndpointViaSTM32F4</a> </li>
+</ul>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a6f3bc7b6916979adfcd719947499ca01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f3bc7b6916979adfcd719947499ca01">&#9670;&nbsp;</a></span>DataBuffer_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback_1_1_data_buffer__s.html">usb::stm32f4::OutEndpointViaSTM34F4Callback::DataBuffer_s</a> <a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#a6f3bc7b6916979adfcd719947499ca01">usb::stm32f4::OutEndpointViaSTM34F4Callback::DataBuffer_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Structure to describe an OUT Endpoint Data Buffer. </p>
+<p>This structure is used to describe the RAM Data Buffer for an OUT transfer.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#a9caf491009dd3f0c2f0084117b4bca06" title="Get Information on the Endpoint&#39;s Data Buffer.">getDataBuffer</a> </dd>
+<dd>
+<a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#aada712b581a3031c27983864be4eca18" title="Set the Data Buffer object.">setDataBuffer</a> </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a53feba8e246392fde4e27c814ab2b803"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53feba8e246392fde4e27c814ab2b803">&#9670;&nbsp;</a></span>OutEndpointViaSTM34F4Callback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">usb::stm32f4::OutEndpointViaSTM34F4Callback::OutEndpointViaSTM34F4Callback </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html">UsbDeviceViaSTM32F4</a> &amp;&#160;</td>
+          <td class="paramname"><em>p_usbDevice</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>p_endpointNumber</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p_usbDevice</td><td>Reference to <a class="el" href="classusb_1_1stm32f4_1_1_usb_device_via_s_t_m32_f4.html" title="Driver for the STM32F4 USB On-the-Go (OTG) Core in USB Device Mode.">UsbDeviceViaSTM32F4</a> object that handles the USB Device Mode specific hardware access. </td></tr>
+    <tr><td class="paramname">p_endpointNumber</td><td>Number of the endpoint. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0183e81a1459a0f4f2263f67ec7c35e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0183e81a1459a0f4f2263f67ec7c35e5">&#9670;&nbsp;</a></span>~OutEndpointViaSTM34F4Callback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual usb::stm32f4::OutEndpointViaSTM34F4Callback::~OutEndpointViaSTM34F4Callback </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Destructor. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a9caf491009dd3f0c2f0084117b4bca06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9caf491009dd3f0c2f0084117b4bca06">&#9670;&nbsp;</a></span>getDataBuffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#a6f3bc7b6916979adfcd719947499ca01">DataBuffer_t</a>&amp; usb::stm32f4::OutEndpointViaSTM34F4Callback::getDataBuffer </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get Information on the Endpoint's Data Buffer. </p>
+<p>Returns the address and length of the Endpoint's Data Buffer.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#aada712b581a3031c27983864be4eca18" title="Set the Data Buffer object.">setDataBuffer</a></dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>const DataBuffer_t&amp; Structure that describes the Data Buffer's address and length. </dd></dl>
+
+</div>
+</div>
+<a id="af150ca6700f0b7a572658ed64fb67a57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af150ca6700f0b7a572658ed64fb67a57">&#9670;&nbsp;</a></span>packetReceived()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void usb::stm32f4::OutEndpointViaSTM34F4Callback::packetReceived </td>
+          <td>(</td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>p_numBytes</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Handle the OUT Endpoint <em>Packet Received</em> Event. </p>
+<p>Called by <a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#af130494c5214250c8213f9936ecdedd9" title="Callback to read received OUT data from the Hardware&#39;s Rx FIFO.">OutEndpointViaSTM32F4::dataReceivedDeviceCallback</a> when a data packet is received.</p>
+<p>The main purpose is to count the number of received OUT data bytes in <a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#ab3178b6e56b3c410ef36c1dd6f041edd" title="Counter for transmitted OUT Bytes.">m_transmitLength</a>. </p>
+
+</div>
+</div>
+<a id="aada712b581a3031c27983864be4eca18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aada712b581a3031c27983864be4eca18">&#9670;&nbsp;</a></span>setDataBuffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void usb::stm32f4::OutEndpointViaSTM34F4Callback::setDataBuffer </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t *const&#160;</td>
+          <td class="paramname"><em>p_buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>p_length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the Data Buffer object. </p>
+<p>The device-independent layers use this method to set up the Endpoint's Data Buffer, depending on the state of the system (e.g. Data OUT Stage in Control Request).</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classusb_1_1stm32f4_1_1_ctrl_out_endpoint_via_s_t_m32_f4.html#a007722351f1ff90920e3df456c414830" title="Setup the RAM Buffer for the Data OUT Stage.">CtrlOutEndpointViaSTM32F4::setDataStageBuffer</a> </dd>
+<dd>
+<a class="el" href="classusb_1_1_usb_bulk_out_endpoint_t.html#a487d558047068f93bdff0006ff82984f" title="Register the Hardware-specific Endpoint Handler.">UsbBulkOutEndpointT::registerHwEndpoint</a></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p_buffer</td><td>Address of the Data Buffer. </td></tr>
+    <tr><td class="paramname">p_length</td><td>Size of the Data Buffer (in Bytes). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae21f69208352644fcbdb1c02545efb2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae21f69208352644fcbdb1c02545efb2c">&#9670;&nbsp;</a></span>transferComplete() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void usb::stm32f4::OutEndpointViaSTM34F4Callback::transferComplete </td>
+          <td>(</td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>p_numBytes</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sub-class specific Transfer Complete handler. </p>
+<p>This method is implemented by concrete sub-classes handle a <em>Transfer Complete</em> Interrupt.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#a99c4f7697fd1b0fd8707226ed33f8a6b" title="Handle the OUT Endpoint Transfer Complete IRQ.">transferComplete()</a></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p_numBytes</td><td>Number of Bytes received in the last transfer. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="classusb_1_1stm32f4_1_1_bulk_out_endpoint_via_s_t_m32_f4.html#a897a620f4c41fc0619690e32d6b488fe">usb::stm32f4::BulkOutEndpointViaSTM32F4</a>, and <a class="el" href="classusb_1_1stm32f4_1_1_ctrl_out_endpoint_via_s_t_m32_f4.html#a2c9ffb224d9ace8af03f5ed2eb388a62">usb::stm32f4::CtrlOutEndpointViaSTM32F4</a>.</p>
+
+</div>
+</div>
+<a id="a99c4f7697fd1b0fd8707226ed33f8a6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99c4f7697fd1b0fd8707226ed33f8a6b">&#9670;&nbsp;</a></span>transferComplete() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void usb::stm32f4::OutEndpointViaSTM34F4Callback::transferComplete </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Handle the OUT Endpoint <em>Transfer Complete</em> IRQ. </p>
+<p>Called by <a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html#ab214b5bae2c4e62b36b81aa45d3813a8" title="Handle Endpoint Transfer Complete IRQ.">OutEndpointViaSTM32F4::handleTransferCompleteIrq</a> when a <em>Transfer Comlete</em> IRQ occurs.</p>
+<p>The call is propagated to a Endpoint-type specific handler in a concrete sub-class.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#ae21f69208352644fcbdb1c02545efb2c" title="Sub-class specific Transfer Complete handler.">OutEndpointViaSTM34F4Callback::transferComplete(const size_t p_numBytes) const</a> </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a9377b4bd34a447d312163f9d5fddc47b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9377b4bd34a447d312163f9d5fddc47b">&#9670;&nbsp;</a></span>m_dataBuffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#a6f3bc7b6916979adfcd719947499ca01">DataBuffer_t</a> usb::stm32f4::OutEndpointViaSTM34F4Callback::m_dataBuffer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Data Buffer for received OUT Data. </p>
+<p>This structure is set up when <a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#aada712b581a3031c27983864be4eca18" title="Set the Data Buffer object.">setDataBuffer</a> is called by the hardware-independent layers and is used to refer to the RAM Buffer that receives OUT Data. </p>
+
+</div>
+</div>
+<a id="a109310ec12848b70ede7d31518a092b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a109310ec12848b70ede7d31518a092b6">&#9670;&nbsp;</a></span>m_outEndpoint</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m32_f4.html">OutEndpointViaSTM32F4</a> usb::stm32f4::OutEndpointViaSTM34F4Callback::m_outEndpoint</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Generic OUT Endpoint Driver. </p>
+<p>This aggretate member is used to drive the actual OUT Endpoint hardware. </p>
+
+</div>
+</div>
+<a id="ab3178b6e56b3c410ef36c1dd6f041edd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3178b6e56b3c410ef36c1dd6f041edd">&#9670;&nbsp;</a></span>m_transmitLength</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t usb::stm32f4::OutEndpointViaSTM34F4Callback::m_transmitLength</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Counter for transmitted OUT Bytes. </p>
+<p>This variable is used to count the number of bytes received in the last OUT transfer.</p>
+<p>It is increased in <a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#af150ca6700f0b7a572658ed64fb67a57" title="Handle the OUT Endpoint Packet Received Event.">packetReceived</a> and reset after <a class="el" href="classusb_1_1stm32f4_1_1_out_endpoint_via_s_t_m34_f4_callback.html#ae21f69208352644fcbdb1c02545efb2c" title="Sub-class specific Transfer Complete handler.">transferComplete</a> has been called. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>common/stm32f4/usb/include/usb/<a class="el" href="_out_endpoint_via_s_t_m32_f4_8hpp_source.html">OutEndpointViaSTM32F4.hpp</a></li>
 </ul>
