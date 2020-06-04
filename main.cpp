@@ -147,7 +147,7 @@ static usb::UsbVendorInterface                                      usbInterface
 #error No USB Interface defined.
 #endif
 
-static usb::UsbConfigurationT<decltype(usbConfigurationDescriptor)> usbConfiguration(usbInterface, usbConfigurationDescriptor);
+static usb::UsbConfiguration                                                usbConfiguration(usbInterface, usbConfigurationDescriptor);
 
 static usb::UsbDevice                                                       genericUsbDevice(usbHwDevice, usbDeviceDescriptor, usbStringDescriptors, { &usbConfiguration });
 
