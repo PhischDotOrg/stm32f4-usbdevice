@@ -5,24 +5,53 @@ cmake_minimum_required(VERSION 3.13)
 project(stm32f4-usbdevice)
 
 ###############################################################################
+# Enable C++17 Support according to:
+#
+# https://crascit.com/2015/03/28/enabling-cxx11-in-cmake/
+#
+# Google Test requires > C++11.
+###############################################################################
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+###############################################################################
+# Unit Test Support, defaults to Off.
+###############################################################################
+set(UNITTEST FALSE CACHE BOOL "Build Unit Tests, not the target code")
+
+###############################################################################
 # Project-specific configuration
 ###############################################################################
 set(PROJECT_NAME    stm32f4-minimal)
-set(TARGET_NAME     firmware)
-set(TARGET_SRC
-    ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/UsbDescriptors.cpp
-)
+if(UNITTEST)
+    message(STATUS "Building Unit Tests")
+
+    add_definitions("-DHOSTBUILD")
+
+    set(TARGET_NAME     test-firmware)
+    set(TARGET_SRC
+        ${CMAKE_CURRENT_SOURCE_DIR}/gtest-main.cpp
+    )
+else()
+    message(STATUS "Building Target Executable")
+
+    set(TARGET_NAME     firmware)
+    set(TARGET_SRC
+        ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/UsbDescriptors.cpp
+    )
+endif()
 
 # Selection of USB Interface
-add_definitions("-DUSB_INTERFACE_VCP")
-# add_definitions("-DUSB_INTERFACE_VENDOR")
+# add_definitions("-DUSB_INTERFACE_VCP")
+add_definitions("-DUSB_INTERFACE_VENDOR")
 
 # Selection of USB Application
 add_definitions("-DUSB_APPLICATION_LOOPBACK")
 # add_definitions("-DUSB_APPLICATION_UART")
 
-# add_definitions("-DUSB_DEBUG")
+add_definitions("-DUSB_DEBUG")
 
 ###############################################################################
 # Include a common CMake File that contains the stuff which would normally go
