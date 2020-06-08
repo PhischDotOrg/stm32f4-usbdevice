@@ -23,9 +23,9 @@ set(UNITTEST FALSE CACHE BOOL "Build Unit Tests, not the target code")
 ###############################################################################
 # Project-specific configuration
 ###############################################################################
-set(PROJECT_NAME    stm32f4-minimal)
 if(UNITTEST)
     message(STATUS "Building Unit Tests")
+    enable_testing()
 
     add_definitions("-DHOSTBUILD")
 
