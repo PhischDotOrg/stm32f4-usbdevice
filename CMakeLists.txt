@@ -16,24 +16,15 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 ###############################################################################
-# Unit Test Support, defaults to Off.
+# Include Unit Testing / Code Coverage Support
 ###############################################################################
-set(UNITTEST FALSE CACHE BOOL "Build Unit Tests, not the target code")
+include(common/UnitTest.cmake)
+include(common/Coverage.cmake)
 
 ###############################################################################
 # Project-specific configuration
 ###############################################################################
-if(UNITTEST)
-    message(STATUS "Building Unit Tests")
-    enable_testing()
-
-    add_definitions("-DHOSTBUILD")
-
-    set(TARGET_NAME     test-firmware)
-    set(TARGET_SRC
-        ${CMAKE_CURRENT_SOURCE_DIR}/gtest-main.cpp
-    )
-else()
+if (NOT ${UNITTEST})
     message(STATUS "Building Target Executable")
 
     set(TARGET_NAME     firmware)
@@ -51,7 +42,7 @@ add_definitions("-DUSB_INTERFACE_VENDOR")
 add_definitions("-DUSB_APPLICATION_LOOPBACK")
 # add_definitions("-DUSB_APPLICATION_UART")
 
-add_definitions("-DUSB_DEBUG")
+# add_definitions("-DUSB_DEBUG")
 
 ###############################################################################
 # Include a common CMake File that contains the stuff which would normally go
