@@ -160,7 +160,7 @@ static usb::stm32f4::CtrlOutEndpointViaSTM32F4                              defa
 /*******************************************************************************
  * Tasks
  ******************************************************************************/
-static tasks::HeartbeatT<decltype(g_uart), decltype(g_led_gn)>      heartbeat_gn("heartbt", g_uart, g_led_gn, 3, 1000);
+static tasks::HeartbeatT<decltype(g_uart), decltype(g_led_gn)>      heartbeat_gn("heartbt", g_uart, g_led_gn, 3, 500);
 
 /*******************************************************************************
  *
@@ -209,6 +209,7 @@ main(void) {
         goto bad;
     }
 
+    usbHwDevice.initialize();
     usbHwDevice.start();
 
     g_uart.printf("Starting FreeRTOS Scheduler...\r\n");

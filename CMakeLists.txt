@@ -24,15 +24,12 @@ include(common/Coverage.cmake)
 ###############################################################################
 # Project-specific configuration
 ###############################################################################
-if (NOT ${UNITTEST})
-    message(STATUS "Building Target Executable")
-
-    set(TARGET_NAME     firmware)
-    set(TARGET_SRC
-        ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/UsbDescriptors.cpp
-    )
-endif()
+set(PROJECT_NAME    ${CMAKE_PROJECT_NAME}) # FIXME This is redundant
+set(TARGET_NAME     firmware)
+set(TARGET_SRC
+    ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/UsbDescriptors.cpp
+)
 
 # Selection of USB Interface
 # add_definitions("-DUSB_INTERFACE_VCP")
