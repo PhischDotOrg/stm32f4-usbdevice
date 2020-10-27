@@ -1,12 +1,22 @@
 /*-
  * $Copyright$
 -*/
+#include <common/Infrastructure.hpp>
+#include <phisch/log.h>
 
-#include <stm32f4/PwrViaSTM32F4.hpp>
-#include <stm32f4/FlashViaSTM32F4.hpp>
-#include <stm32f4/RccViaSTM32F4.hpp>
-#include <stm32f4/ScbViaSTM32F4.hpp>
-#include <stm32f4/NvicViaSTM32F4.hpp>
+/* for vTaskStartScheduler */
+#include <FreeRTOS.h> 
+#include <FreeRTOS/include/task.h>
+
+#include <stm32/Cpu.hpp>
+
+#include <stm32/Pll.hpp>
+#include <stm32/Pwr.hpp>
+#include <stm32/Flash.hpp>
+#include <stm32/Gpio.hpp>
+#include <stm32/Rcc.hpp>
+#include <stm32/Scb.hpp>
+#include <stm32/Nvic.hpp>
 
 #include <gpio/GpioAccess.hpp>
 #include <gpio/GpioEngine.hpp>
@@ -33,22 +43,12 @@
 
 #include <usb/UsbApplication.hpp>
 
-#include <version.h>
-
 /*******************************************************************************
  *
  ******************************************************************************/
 #if defined(__cplusplus)
 extern "C" {
 #endif /* defined(__cplusplus) */
-
-/*******************************************************************************
- * Information on some Segments, defined via Linker Script
- ******************************************************************************/
-extern char stext, etext;
-extern char sdata, edata;
-extern char sbss, ebss;
-extern char bstack, estack;
 
 /*******************************************************************************
  * USB Descriptors (defined in UsbDescriptors.cpp)
@@ -65,65 +65,70 @@ extern const ::usb::UsbConfigurationDescriptor_t usbConfigurationDescriptor;
 /*******************************************************************************
  * System Devices
  ******************************************************************************/
-static devices::RccViaSTM32F4::PllConfiguration pllCfg(336, 8, devices::RccViaSTM32F4::e_PllP_Div2, 7,
-    devices::RccViaSTM32F4::e_APBPrescaler_Div4,
-    devices::RccViaSTM32F4::e_APBPrescaler_Div2,
-    devices::RccViaSTM32F4::e_AHBPrescaler_None,
-    devices::RccViaSTM32F4::e_PllSourceHSE,
-    devices::RccViaSTM32F4::e_SysclkPLL,
-    16000000,
-    8000000);
+static const constexpr stm32::PllCfg pllCfg = {
+    .m_pllSource        = stm32::PllCfg::PllSource_t::e_PllSourceHSE,
+    .m_hseSpeedInHz     = 8 * 1000 * 1000,
+    .m_pllM             = 8,
+    .m_pllN             = 336,
+    .m_pllP             = stm32::PllCfg::PllP_t::e_PllP_Div2,
+    .m_pllQ             = stm32::PllCfg::PllQ_t::e_PllQ_Div7,
+    .m_sysclkSource     = stm32::PllCfg::SysclkSource_t::e_SysclkPLL,
+    .m_ahbPrescaler     = stm32::PllCfg::AHBPrescaler_t::e_AHBPrescaler_None,
+    .m_apb1Prescaler    = stm32::PllCfg::APBPrescaler_t::e_APBPrescaler_Div4,
+    .m_apb2Prescaler    = stm32::PllCfg::APBPrescaler_t::e_APBPrescaler_Div2
+};
 
-static devices::PwrViaSTM32F4           pwr(PWR);
-static devices::FlashViaSTM32F4         flash(FLASH);
-static devices::RccViaSTM32F4           rcc(RCC, pllCfg, flash, pwr);
-static devices::ScbViaSTM32F4           scb(SCB);
-static devices::NvicViaSTM32F4          nvic(NVIC, scb);
+static stm32::Scb                       scb(SCB);
+static stm32::Nvic                      nvic(NVIC, scb);
+
+static stm32::Pwr                       pwr(PWR);
+static stm32::Flash                     flash(FLASH);
+static stm32::Rcc                       rcc(RCC, pllCfg, flash, pwr);
 
 /*******************************************************************************
- * GPIO Engine Handlers
+ * GPIO Engine Handlers 
  ******************************************************************************/
-static gpio::GpioAccessViaSTM32F4_GpioA gpio_A(rcc);
+static stm32::Gpio::A                   gpio_A(rcc);
 static gpio::GpioEngine                 gpio_engine_A(&gpio_A);
 
-static gpio::GpioAccessViaSTM32F4_GpioC gpio_C(rcc);
+static stm32::Gpio::C                   gpio_C(rcc);
 static gpio::GpioEngine                 gpio_engine_C(&gpio_C);
 
-static gpio::GpioAccessViaSTM32F4_GpioD gpio_D(rcc);
+static stm32::Gpio::D                   gpio_D(rcc);
 static gpio::GpioEngine                 gpio_engine_D(&gpio_D);
 
 /*******************************************************************************
  * LEDs
  ******************************************************************************/
-static gpio::PinT<decltype(gpio_engine_D)>  g_led_gn(&gpio_engine_D, 12);
-static gpio::PinT<decltype(gpio_engine_D)>  g_led_or(&gpio_engine_D, 13);
-static gpio::PinT<decltype(gpio_engine_D)>  g_led_rd(&gpio_engine_D, 14);
-static gpio::PinT<decltype(gpio_engine_D)>  g_led_bl(&gpio_engine_D, 15);
+static gpio::AlternateFnPin             g_mco1(gpio_engine_A, 8);
+static gpio::DigitalOutPin              g_led_green(gpio_engine_D, 12);
 
 /*******************************************************************************
  * UART
  ******************************************************************************/
-static gpio::PinT<decltype(gpio_engine_C)>  uart_tx(&gpio_engine_C, 6);
-static gpio::PinT<decltype(gpio_engine_C)>  uart_rx(&gpio_engine_C, 7);
-#if defined(STM32F4_DISCOVERY)
-static uart::UartAccessSTM32F4_Uart6    uart_access(rcc, uart_rx, uart_tx);
-#endif /* defined(STM32F4_DISCOVERY) */
+static gpio::AlternateFnPin             uart_tx(gpio_engine_C, 6);
+static gpio::AlternateFnPin             uart_rx(gpio_engine_C, 7);
+static stm32::Uart::Usart6<gpio::AlternateFnPin>    uart_access(rcc, uart_rx, uart_tx);
 uart::UartDevice                        g_uart(&uart_access);
 
 /*******************************************************************************
  * USB Device
  ******************************************************************************/
-static gpio::PinT<decltype(gpio_engine_A)>  usb_pin_dm(&gpio_engine_A, 11);
-static gpio::PinT<decltype(gpio_engine_A)>  usb_pin_dp(&gpio_engine_A, 12);
-static gpio::PinT<decltype(gpio_engine_A)>  usb_pin_vbus(&gpio_engine_A, 9);
-static gpio::PinT<decltype(gpio_engine_A)>  usb_pin_id(&gpio_engine_A, 10);
+static gpio::AlternateFnPin             usb_pin_dm(gpio_engine_A, 11);
+static gpio::AlternateFnPin             usb_pin_dp(gpio_engine_A, 12);
+static gpio::AlternateFnPin             usb_pin_vbus(gpio_engine_A, 9);
+static gpio::AlternateFnPin             usb_pin_id(gpio_engine_A, 10);
 
-static usb::stm32f4::UsbFullSpeedCore                               usbCore(nvic, rcc, usb_pin_dm, usb_pin_dp, usb_pin_vbus, usb_pin_id, /* p_rxFifoSzInWords = */ 256);
-static usb::stm32f4::UsbDeviceViaSTM32F4                            usbHwDevice(usbCore);
-static usb::stm32f4::CtrlInEndpointViaSTM32F4                       defaultHwCtrlInEndpoint(usbHwDevice, /* p_fifoSzInWords = */ 0x20);
+static stm32::usb::UsbFullSpeedCoreT<
+  decltype(nvic),
+  decltype(rcc),
+  decltype(usb_pin_dm)
+>                                       usbCore(nvic, rcc, usb_pin_dm, usb_pin_dp, usb_pin_vbus, usb_pin_id, /* p_rxFifoSzInWords = */ 256);
+static stm32::usb::UsbDeviceViaSTM32F4          usbHwDevice(usbCore);
+static stm32::usb::CtrlInEndpointViaSTM32F4     defaultHwCtrlInEndpoint(usbHwDevice, /* p_fifoSzInWords = */ 0x20);
 
-static usb::stm32f4::BulkInEndpointViaSTM32F4                       bulkInHwEndp(usbHwDevice, /* p_fifoSzInWords = */ 128, 1);
-static usb::UsbBulkInEndpoint                                       bulkInEndpoint(bulkInHwEndp);
+static stm32::usb::BulkInEndpointViaSTM32F4     bulkInHwEndp(usbHwDevice, /* p_fifoSzInWords = */ 128, 1);
+static usb::UsbBulkInEndpointT                  bulkInEndpoint(bulkInHwEndp);
 
 #if defined(USB_APPLICATION_LOOPBACK)
 /* TODO I've found that increasing the buffer size beyond 951 Bytes will make things stop working. */
@@ -135,8 +140,8 @@ static usb::UsbUartApplicationT<decltype(uart_access)>              bulkOutAppli
 #endif
 
 #if defined(USB_APPLICATION_LOOPBACK) || defined(USB_APPLICATION_UART)
-static usb::UsbBulkOutEndpointT<usb::stm32f4::BulkOutEndpointViaSTM32F4>    bulkOutEndpoint(bulkOutApplication);
-static usb::stm32f4::BulkOutEndpointViaSTM32F4                              bulkOutHwEndp(usbHwDevice, bulkOutEndpoint, 1);
+static usb::UsbBulkOutEndpointT<stm32::usb::BulkOutEndpointViaSTM32F4>  bulkOutEndpoint(bulkOutApplication);
+static stm32::usb::BulkOutEndpointViaSTM32F4                            bulkOutHwEndp(usbHwDevice, bulkOutEndpoint, 1);
 #endif /* defined(USB_APPLICATION_LOOPBACK) || defined(USB_APPLICATION_UART) */
 
 #if defined(USB_INTERFACE_VCP)
@@ -151,16 +156,27 @@ static usb::UsbConfiguration                                                usbC
 
 static usb::UsbDevice                                                       genericUsbDevice(usbHwDevice, usbDeviceDescriptor, usbStringDescriptors, { &usbConfiguration });
 
-static usb::UsbCtrlInEndpoint                                               ctrlInEndp(defaultHwCtrlInEndpoint);
+static usb::UsbCtrlInEndpointT                                              ctrlInEndp(defaultHwCtrlInEndpoint);
 static usb::UsbControlPipe                                                  defaultCtrlPipe(genericUsbDevice, ctrlInEndp);
 
-static usb::UsbCtrlOutEndpointT<usb::stm32f4::CtrlOutEndpointViaSTM32F4>    ctrlOutEndp(defaultCtrlPipe);
-static usb::stm32f4::CtrlOutEndpointViaSTM32F4                              defaultCtrlOutEndpoint(usbHwDevice, ctrlOutEndp);
+static usb::UsbCtrlOutEndpointT<stm32::usb::CtrlOutEndpointViaSTM32F4>      ctrlOutEndp(defaultCtrlPipe);
+static stm32::usb::CtrlOutEndpointViaSTM32F4                                defaultCtrlOutEndpoint(usbHwDevice, ctrlOutEndp);
 
 /*******************************************************************************
  * Tasks
  ******************************************************************************/
-static tasks::HeartbeatT<decltype(g_uart), decltype(g_led_gn)>      heartbeat_gn("heartbt", g_uart, g_led_gn, 3, 500);
+static tasks::HeartbeatT<decltype(g_led_green)> heartbeat_gn("hrtbt_g", g_led_green, 3, 500);
+
+/*******************************************************************************
+ *
+ ******************************************************************************/
+const uint32_t SystemCoreClock = pllCfg.getSysclkSpeedInHz();
+
+static_assert(pllCfg.isValid() == true,                             "PLL Configuration is not valid!");
+static_assert(SystemCoreClock               == 168 * 1000 * 1000,   "Expected System Clock to be at 168 MHz!");
+static_assert(pllCfg.getAhbSpeedInHz()      == 168 * 1000 * 1000,   "Expected AHB to be running at 168 MHz!");
+static_assert(pllCfg.getApb1SpeedInHz()     ==  42 * 1000 * 1000,   "Expected APB1 to be running at 42 MHz!");
+static_assert(pllCfg.getApb2SpeedInHz()     ==  84 * 1000 * 1000,   "Expected APB2 to be running at 84 MHz!");
 
 /*******************************************************************************
  *
@@ -169,179 +185,49 @@ static tasks::HeartbeatT<decltype(g_uart), decltype(g_led_gn)>      heartbeat_gn
 extern "C" {
 #endif /* defined(__cplusplus) */
 
+#if defined(HOSTBUILD)
+int
+#else
 [[noreturn]]
 void
+#endif
 main(void) {
-    g_led_gn.enable(gpio::GpioAccessViaSTM32F4::e_Output, gpio::GpioAccessViaSTM32F4::e_None, gpio::GpioAccessViaSTM32F4::e_Gpio);
-    g_led_or.enable(gpio::GpioAccessViaSTM32F4::e_Output, gpio::GpioAccessViaSTM32F4::e_None, gpio::GpioAccessViaSTM32F4::e_Gpio);
-    g_led_rd.enable(gpio::GpioAccessViaSTM32F4::e_Output, gpio::GpioAccessViaSTM32F4::e_None, gpio::GpioAccessViaSTM32F4::e_Gpio);
-    g_led_bl.enable(gpio::GpioAccessViaSTM32F4::e_Output, gpio::GpioAccessViaSTM32F4::e_None, gpio::GpioAccessViaSTM32F4::e_Gpio);
+    rcc.setMCO(g_mco1, decltype(rcc)::MCO1Output_e::e_PLL, decltype(rcc)::MCOPrescaler_t::e_MCOPre_5);
 
-    g_uart.printf("Copyright (c) 2013-2017, 2020 Philip Schulz <phs@phisch.org>\r\n");
-    g_uart.printf("All rights reserved.\r\n");
-    g_uart.printf("\r\n");
-    g_uart.printf("SW Version: %s\r\n", gSwVersionId);
-    g_uart.printf("SW Build Timestamp: %s\r\n", gSwBuildTime);
-    g_uart.printf("\r\n");
-    g_uart.printf("Fixed Data: [0x0%x - 0x0%x]\t(%d Bytes total, %d Bytes used)\r\n",
-      &gFixedDataBegin, &gFixedDataEnd, &gFixedDataEnd - &gFixedDataBegin, &gFixedDataUsed- &gFixedDataBegin);
-    g_uart.printf("      Code: [0x0%x - 0x0%x]\t(%d Bytes)\r\n", &stext, &etext, &etext - &stext);
-    g_uart.printf("      Data: [0x%x - 0x%x]\t(%d Bytes)\r\n", &sdata, &edata, &edata - &sdata);
-    g_uart.printf("       BSS: [0x%x - 0x%x]\t(%d Bytes)\r\n", &sbss, &ebss, &ebss - &sbss);
-    g_uart.printf(" Total RAM: [0x%x - 0x%x]\t(%d Bytes)\r\n", &sdata, &ebss, &ebss - &sdata);
-    g_uart.printf("     Stack: [0x%x - 0x%x]\t(%d Bytes)\r\n", &bstack, &estack, &estack - &bstack);
-    g_uart.printf("\r\n");
+    uart_access.setBaudRate(decltype(uart_access)::BaudRate_e::e_230400);
 
-    unsigned sysclk = rcc.getSysclkSpeedInHz() / 1000;
-    unsigned ahb    = rcc.getAhbSpeedInHz() / 1000;
-    unsigned apb1   = rcc.getApb1SpeedInHz() / 1000;
-    unsigned apb2   = rcc.getApb2SpeedInHz() / 1000;
+    const unsigned sysclk = pllCfg.getSysclkSpeedInHz() / 1000;
+    const unsigned ahb    = pllCfg.getAhbSpeedInHz() / 1000;
+    const unsigned apb1   = pllCfg.getApb1SpeedInHz() / 1000;
+    const unsigned apb2   = pllCfg.getApb2SpeedInHz() / 1000;
 
-    g_uart.printf("CPU running @ %d kHz\r\n", sysclk);
-    g_uart.printf("        AHB @ %d kHz\r\n", ahb);
-    g_uart.printf("       APB1 @ %d kHz\r\n", apb1);
-    g_uart.printf("       APB2 @ %d kHz\r\n", apb2);
-    g_uart.printf("\r\n");
+    PrintStartupMessage(sysclk, ahb, apb1, apb2);
 
     /* Inform FreeRTOS about clock speed */
-    if (SysTick_Config(rcc.getSysclkSpeedInHz() / configTICK_RATE_HZ)) {
-        g_uart.printf("FATAL: Capture Error!\r\n");
+    if (SysTick_Config(SystemCoreClock / configTICK_RATE_HZ)) {
+        PHISCH_LOG("FATAL: Capture Error!\r\n");
         goto bad;
     }
 
-    usbHwDevice.initialize();
     usbHwDevice.start();
 
-    g_uart.printf("Starting FreeRTOS Scheduler...\r\n");
+    PHISCH_LOG("Starting FreeRTOS Scheduler...\r\n");
     vTaskStartScheduler();
 
     usbHwDevice.stop();
 
 bad:
-    g_led_rd.set(gpio::Pin::On);
-    g_uart.printf("FATAL ERROR!\r\n");
+    PHISCH_LOG("FATAL ERROR!\r\n");
     while (1) ;
+
+#if defined(HOSTBUILD)
+    return (0);
+#endif
 }
 
 #if defined(__cplusplus)
 } /* extern "C" */
 #endif /* defined(__cplusplus) */
-
-/*******************************************************************************
- *
- ******************************************************************************/
-#if defined(__cplusplus)
-extern "C" {
-#endif /* defined (__cplusplus) */
-
-void
-led2_off(void) {
-    g_led_or.set(gpio::GpioPin::Off);
-}
-
-void
-led3_off(void) {
-    g_led_bl.set(gpio::GpioPin::Off);
-}
-
-[[noreturn]]
-void
-halt(const char * const p_file, const unsigned p_line) {
-    g_led_rd.enable(gpio::GpioAccessViaSTM32F4::e_Output, gpio::GpioAccessViaSTM32F4::e_None, gpio::GpioAccessViaSTM32F4::e_Gpio);
-    g_led_rd.set(gpio::Pin::On);
-
-    g_uart.printf("%s(): %s : %d\r\n", __func__, p_file, p_line);
-
-    while (1) { };
-}
-
-[[noreturn]]
-void
-assert_failed(uint8_t *p_file, uint32_t p_line) {
-    __disable_irq();
-
-    halt(reinterpret_cast<char *>(p_file), p_line);
-}
-
-int
-usleep(unsigned p_usec) {
-    SysTick_Type *sysTick = reinterpret_cast<SysTick_Type *>(SysTick_BASE);
-
-    /*
-     * Halt SysTick, if already running. Also, store current SysTick status.
-     */
-    bool enabled = (sysTick->CTRL & SysTick_CTRL_ENABLE_Msk) != 0;
-    if (enabled) {
-        sysTick->CTRL &= ~SysTick_CTRL_ENABLE_Msk;
-    }
-
-    unsigned safeCtrl = sysTick->CTRL;
-    unsigned safeLoad = sysTick->LOAD;
-    unsigned safeVal  = sysTick->VAL;
-
-    /*
-     * Configure SysTick for 1ms Overflow, then wait for required number of
-     * milliseconds.
-     */
-    const unsigned ticksPerMs = rcc.getSysclkSpeedInHz() / 1000;
-    assert((ticksPerMs & 0x00FFFFFF) == ticksPerMs); 
-    unsigned waitMs = p_usec / 1000;
-
-    sysTick->CTRL &= ~SysTick_CTRL_TICKINT_Msk;
-    sysTick->CTRL |= SysTick_CTRL_CLKSOURCE_Msk;
-
-    sysTick->LOAD = ticksPerMs;
-    sysTick->VAL = ticksPerMs;
-    sysTick->CTRL |= SysTick_CTRL_ENABLE_Msk;
-    while (waitMs > 0) {
-        while (!(sysTick->CTRL & SysTick_CTRL_COUNTFLAG_Msk)) ;
-        waitMs--;
-    }
-    sysTick->CTRL &= ~SysTick_CTRL_ENABLE_Msk;
-
-    /*
-     * Configure SysTick for 1us Overflow, then wait for required number of
-     * microseconds.
-     */
-    const unsigned ticksPerUs = rcc.getSysclkSpeedInHz() / (1000 * 1000);
-    assert((ticksPerUs & 0x00FFFFFF) == ticksPerUs);
-    unsigned waitUs = p_usec & 1024; // Assumes 1ms = 1024us. Close enough.
-
-    sysTick->LOAD = ticksPerUs;
-    sysTick->VAL = ticksPerUs;
-    sysTick->CTRL |= SysTick_CTRL_ENABLE_Msk;
-    while (waitUs > 0) {
-        while (!(sysTick->CTRL & SysTick_CTRL_COUNTFLAG_Msk)) ;
-        waitUs--;
-    }
-    sysTick->CTRL &= ~SysTick_CTRL_ENABLE_Msk;
-
-    /*
-     * Restore SysTick status.
-     */
-    sysTick->VAL  = safeVal;
-    sysTick->LOAD = safeLoad;
-    sysTick->CTRL = safeCtrl;
-    if (enabled) {
-        sysTick->CTRL |= SysTick_CTRL_ENABLE_Msk;
-    }
-    
-    return 0;
-}
-
-extern const uintptr_t __stack_chk_guard = 0xa5a5a5a5;
-
-[[noreturn]]
-void
-__stack_chk_fail( ) {
-    __disable_irq();
-
-    halt("Stack Check failed.", 0);
-}
-
-#if defined(__cplusplus)
-} /* extern "C" */
-#endif /* defined (__cplusplus) */
 
 /*******************************************************************************
  *

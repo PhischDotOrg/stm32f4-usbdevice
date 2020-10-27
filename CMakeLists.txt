@@ -1,7 +1,7 @@
 #-
 # $Copyright$
 #
-cmake_minimum_required(VERSION 3.13)
+cmake_minimum_required(VERSION 3.12)
 project(stm32f4-usbdevice)
 
 ###############################################################################
@@ -24,21 +24,25 @@ include(common/Coverage.cmake)
 ###############################################################################
 # Project-specific configuration
 ###############################################################################
-set(PROJECT_NAME    ${CMAKE_PROJECT_NAME}) # FIXME This is redundant
 set(TARGET_NAME     firmware)
 set(TARGET_SRC
     ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/UsbDescriptors.cpp
 )
 
+set(STM32_BOARD   STM32F4_Discovery    CACHE STRING "STM32 Board Type")
+
 # Selection of USB Interface
-# add_definitions("-DUSB_INTERFACE_VCP")
-add_definitions("-DUSB_INTERFACE_VENDOR")
+add_definitions("-DUSB_INTERFACE_VCP")
+# add_definitions("-DUSB_INTERFACE_VENDOR")
 
 # Selection of USB Application
-add_definitions("-DUSB_APPLICATION_LOOPBACK")
-# add_definitions("-DUSB_APPLICATION_UART")
+# add_definitions("-DUSB_APPLICATION_LOOPBACK")
+add_definitions("-DUSB_APPLICATION_UART")
 
+# FIXME Adding this breaks the Hostbuild / Test Cases for USB
+# This is b/c the USB_PRINTF resolves to g_uart.printf() and the
+# g_uart Symbol is not defined.
 # add_definitions("-DUSB_DEBUG")
 
 ###############################################################################

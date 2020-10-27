@@ -9,7 +9,13 @@
 extern "C" {
 #endif /* defined(__cplusplus) */
 
-extern const ::usb::UsbDeviceDescriptor_t usbDeviceDescriptor __attribute__((aligned(4), section(".fixeddata"))) = {
+#if !defined(HOSTBUILD)
+#define FIXED_DATA   __attribute__((aligned(4), section(".fixeddata")))
+#else
+#define FIXED_DATA
+#endif
+
+extern const ::usb::UsbDeviceDescriptor_t usbDeviceDescriptor FIXED_DATA = {
     .m_bLength              = sizeof(::usb::UsbDeviceDescriptor_t),                     /* m_bLength */
     .m_bDescriptorType      = ::usb::UsbDescriptorTypeId_t::e_Device,                   /* m_bDescriptorType */
     .m_bcdUsb               = { 0x00, 0x02 },                                           /* m_bLength */
@@ -39,7 +45,7 @@ extern const ::usb::UsbDeviceDescriptor_t usbDeviceDescriptor __attribute__((ali
  ******************************************************************************/
 static const ::usb::UsbLangId_t usbSupportedLanguageIds[] = { 0x0409, 0x0000 };
 
-extern const ::usb::UsbStringDescriptors_t usbStringDescriptors __attribute__((aligned(4), section(".fixeddata"))) = {
+extern const ::usb::UsbStringDescriptors_t usbStringDescriptors FIXED_DATA = {
         .m_stringDescriptorTable = {
                 .m_languageIds      = ::usb::UsbLangIdStringDescriptor_t(usbSupportedLanguageIds),
                 .m_manufacturer     = ::usb::UsbStringDescriptor("PhiSch.org"),
@@ -61,7 +67,7 @@ extern const struct UsbConfigurationDescriptor_s {
     struct ::usb::UsbCdc_FunctDescr_UnionT<1>               m_cdcFunctDescr_Union;
     struct ::usb::UsbEndpointDescriptor                     m_notificationEndpoint;
     struct ::usb::UsbInterfaceDescriptorT<2>                m_dataInterface;
-} __attribute__((packed)) usbConfigurationDescriptor __attribute__((aligned(4), section(".fixeddata"))) = {
+} __attribute__((packed)) usbConfigurationDescriptor FIXED_DATA = {
     .m_configDescrHdr = {
         .m_bLength                  = sizeof( decltype(usbConfigurationDescriptor.m_configDescrHdr)),
         .m_bDescriptorType          = ::usb::UsbDescriptorTypeId_e::e_Configuration,
@@ -191,7 +197,7 @@ extern const struct UsbConfigurationDescriptor_s {
 extern const struct UsbConfigurationDescriptor_s {
     struct ::usb::UsbConfigurationDescriptorT<void *, 0>    m_configDescrHdr;
     struct ::usb::UsbInterfaceDescriptorT<2>                m_dataInterface;
-} __attribute__((packed)) usbConfigurationDescriptor __attribute__((aligned(4), section(".fixeddata"))) = {
+} __attribute__((packed)) usbConfigurationDescriptor FIXED_DATA = {
     .m_configDescrHdr = {
         .m_bLength                  = sizeof( decltype(usbConfigurationDescriptor.m_configDescrHdr)),
         .m_bDescriptorType          = ::usb::UsbDescriptorTypeId_e::e_Configuration,
