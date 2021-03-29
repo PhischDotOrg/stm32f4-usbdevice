@@ -43,17 +43,23 @@ extern const ::usb::UsbDeviceDescriptor_t usbDeviceDescriptor FIXED_DATA = {
 /*******************************************************************************
  * USB Device String Descriptors
  ******************************************************************************/
-static const ::usb::UsbLangId_t usbSupportedLanguageIds[] = { 0x0409, 0x0000 };
+static constexpr ::usb::UsbLangId_t usbSupportedLanguageIds[] = { 0x0409, 0x0000 };
+static const auto usbLangIdStringDescriptor         FIXED_DATA  = ::usb::UsbLangIdStringDescriptor(usbSupportedLanguageIds);
+static const auto usbStringDescriptorManufacturer   FIXED_DATA  = ::usb::UsbStringDescriptor(u"PhiSch.org");
+static const auto usbStringDescriptorSerialNumber   FIXED_DATA  = ::usb::UsbStringDescriptor(u"D2209DFF-B80D-4E44-A8E5-466ADCCE7E30");
+static const auto usbStringDescriptorProduct        FIXED_DATA  = ::usb::UsbStringDescriptor(u"PhiSch.org USB Virtual COM Port (VCP) Demo on STM32F4Discovery");
+static const auto usbStringDescriptorConfiguration  FIXED_DATA  = ::usb::UsbStringDescriptor(u"PhiSch.org USB Virtual COM Port (VCP) Configuration");
+static const auto usbStringDescriptorInterface      FIXED_DATA  = ::usb::UsbStringDescriptor(u"PhiSch.org USB Comm. Device Class (CDC) Interface");
 
 extern const ::usb::UsbStringDescriptors_t usbStringDescriptors FIXED_DATA = {
-        .m_stringDescriptorTable = {
-                .m_languageIds      = ::usb::UsbLangIdStringDescriptor_t(usbSupportedLanguageIds),
-                .m_manufacturer     = ::usb::UsbStringDescriptor("PhiSch.org"),
-                .m_product          = ::usb::UsbStringDescriptor("PhiSch.org USB Virtual COM Port (VCP) Demo on STM32F4Discovery"),
-                .m_serialNumber     = ::usb::UsbStringDescriptor("6B426366-3E64-4B20-A12D-B8AC744F8ED5"),
-                .m_configuration    = ::usb::UsbStringDescriptor("PhiSch.org USB Virtual COM Port (VCP) Configuration"),
-                .m_interface        = ::usb::UsbStringDescriptor("PhiSch.org USB Comm. Device Class (CDC) Interface")
-        }
+    .m_strings = {
+        .m_languageIds      = usbLangIdStringDescriptor.data(),
+        .m_manufacturer     = usbStringDescriptorManufacturer.data(),
+        .m_product          = usbStringDescriptorProduct.data(),
+        .m_serialNumber     = usbStringDescriptorSerialNumber.data(),
+        .m_configuration    = usbStringDescriptorConfiguration.data(),
+        .m_interface        = usbStringDescriptorInterface.data()
+    }
 };
 
 #if defined(USB_INTERFACE_VCP)
