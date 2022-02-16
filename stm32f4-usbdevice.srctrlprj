@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+    <source_groups>
+        <source_group_bb25aa07-cb9b-4722-bb66-4acf824425ec>
+            <build_file_path>
+                <compilation_db_path>build/compile_commands.json</compilation_db_path>
+            </build_file_path>
+            <compiler_flags>
+                <compiler_flag>-DHAVE_DEBUG_PINS</compiler_flag>
+                <compiler_flag>-DUSB_DEBUG</compiler_flag>
+                <compiler_flag>-DHAVE_STM32</compiler_flag>
+                <compiler_flag>-DSTM32_CPU_FAMILY=STM32F4</compiler_flag>
+                <compiler_flag>-DUART_ENV=STM32</compiler_flag>
+                <compiler_flag>-DSTM32F4</compiler_flag>
+                <compiler_flag>-DSTM32F401xC</compiler_flag>
+                <compiler_flag>-DHOSTBUILD</compiler_flag>
+            </compiler_flags>
+            <exclude_filters>
+                <exclude_filter>../stm32-common/boards/STM32F4_BlackPill/startup_stm32f401xc.S</exclude_filter>
+            </exclude_filters>
+            <header_search_paths>
+                <header_search_path>/Applications/ARM/arm-none-eabi/include/c++/10.3.1</header_search_path>
+                <header_search_path>/Applications/ARM/arm-none-eabi/include/c++/10.3.1/arm-none-eabi</header_search_path>
+                <header_search_path>/Applications/ARM/arm-none-eabi/include</header_search_path>
+            </header_search_paths>
+            <indexed_header_paths>
+                <indexed_header_path>../stm32-common</indexed_header_path>
+                <indexed_header_path>./</indexed_header_path>
+            </indexed_header_paths>
+            <name>C/C++ from Compilation Database</name>
+            <pch_flags>
+                <use_compiler_flags>1</use_compiler_flags>
+            </pch_flags>
+            <status>enabled</status>
+            <type>C/C++ from Compilation Database</type>
+        </source_group_bb25aa07-cb9b-4722-bb66-4acf824425ec>
+    </source_groups>
+    <version>8</version>
+</config>

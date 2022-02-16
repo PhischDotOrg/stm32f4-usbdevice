@@ -2,7 +2,13 @@
 # $Copyright$
 #
 cmake_minimum_required(VERSION 3.12)
-project(stm32f4-usbdevice)
+project(stm32f4-usbdevice
+    VERSION 0.1.2
+    DESCRIPTION "Custom USB Test Device on STM32F4xx"
+    HOMEPAGE_URL "https://github.com/PhischDotOrg/stm32f4-usbdevice"
+    LANGUAGES C CXX ASM
+)
+include(common/ProjectVersion.cmake)
 
 ###############################################################################
 # Enable C++17 Support according to:
@@ -27,23 +33,12 @@ include(common/Coverage.cmake)
 set(TARGET_NAME     firmware)
 set(TARGET_SRC
     ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/UsbDescriptors.cpp
 )
 
-set(STM32_BOARD   STM32F4_Discovery    CACHE STRING "STM32 Board Type")
+set(STM32_BOARD   STM32F4_BlackPill    CACHE STRING "STM32 Board Type")
 
-# Selection of USB Interface
-add_definitions("-DUSB_INTERFACE_VCP")
-# add_definitions("-DUSB_INTERFACE_VENDOR")
-
-# Selection of USB Application
-# add_definitions("-DUSB_APPLICATION_LOOPBACK")
-add_definitions("-DUSB_APPLICATION_UART")
-
-# FIXME Adding this breaks the Hostbuild / Test Cases for USB
-# This is b/c the USB_PRINTF resolves to g_uart.printf() and the
-# g_uart Symbol is not defined.
-# add_definitions("-DUSB_DEBUG")
+add_definitions("-DHAVE_DEBUG_PINS")
+add_definitions("-DUSB_DEBUG")
 
 ###############################################################################
 # Include a common CMake File that contains the stuff which would normally go
